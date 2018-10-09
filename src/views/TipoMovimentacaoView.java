@@ -79,11 +79,11 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtDescricao_TPmovimentacao)
                     .addComponent(txtTipoMvi, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(87, 87, 87)
-                .addComponent(btnInserir_tpMovimentacao)
-                .addGap(33, 33, 33)
-                .addComponent(btnVoltar_tpMovimentacao)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInserir_tpMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(btnVoltar_tpMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

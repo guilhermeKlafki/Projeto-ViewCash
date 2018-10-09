@@ -228,19 +228,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        // TODO add your handling code here:
-
-        objAluno = new Aluno();
-
-        AlunoController alunoCon = new AlunoController(objAluno, null);
-
-        objAluno.setNom_aluno(txtNome.getText());
-
-        //objAluno.setDat_nasc(txtData.getText().toString());
-        objAluno.setEmail(txtEmail.getText());
-        alunoCon.incluirAluno(objAluno);
-        //atualizaUsuario();
-
+     
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
@@ -260,25 +248,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbCursosActionPerformed
 
     private void jtbAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbAlunosMouseClicked
-        // TODO add your handling code here:
-
-        //pega a linha selecionada
-        int linhaSelecionada = jtbAlunos.getSelectedRow();
-        // Primeira coluna da linha
-        String coluna1 = jtbAlunos.getModel().getValueAt(linhaSelecionada, 0).toString();
-        Aluno objAluno = new Aluno();
-        AlunoController AlunoCon = new AlunoController(objAluno, null);
-
-        objAluno = AlunoCon.buscar(coluna1);
-
-        txtMatricula.setText(String.valueOf(objAluno.getMat_aluno()));
-        txtNome.setText(objAluno.getNom_aluno());
-        txtEmail.setText(objAluno.getEmail());
-        objComboCurso.SetaComboBox(String.valueOf(objAluno.getCod_curso()));
-
-        //txtNome
-
-        //basta agora chamar o método buscar, passando o COLUNA1 como parâmetro de consulta
+        
     }//GEN-LAST:event_jtbAlunosMouseClicked
 
     /**

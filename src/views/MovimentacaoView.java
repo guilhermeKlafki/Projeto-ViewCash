@@ -12,7 +12,7 @@ package views;
 public class MovimentacaoView extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form MovimentacaoView
      */
     public MovimentacaoView() {
         initComponents();
@@ -28,215 +28,177 @@ public class MovimentacaoView extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel4 = new javax.swing.JLabel();
-        lblMatricula = new javax.swing.JLabel();
-        btnIncluir = new javax.swing.JButton();
-        txtMatricula = new javax.swing.JFormattedTextField();
-        lblData = new javax.swing.JLabel();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        lblMovimentacao = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lvltpPagamento = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        radioDespesa = new javax.swing.JRadioButton();
+        radioReceita = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        txtData = new javax.swing.JFormattedTextField();
-        txtEmail = new javax.swing.JTextField();
-        btnAlterar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        btnDeletar = new javax.swing.JButton();
-        txtNome = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jcbCursos = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtbAlunos = new javax.swing.JTable();
+        lblData = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        lblTPmovimetacao = new javax.swing.JLabel();
+        lblValor = new javax.swing.JLabel();
+        jComboBoxTipoMovimentacao = new javax.swing.JComboBox<>();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        btnInserir_movimentacao = new javax.swing.JButton();
+        btnVoltar_movimentacao = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel4.setText("Lista dos alunos já cadastrados");
+        lblMovimentacao.setBackground(new java.awt.Color(204, 204, 204));
+        lblMovimentacao.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblMovimentacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMovimentacao.setText("Cadastro de Movimentação");
 
-        lblMatricula.setText("Matrícula");
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnIncluir.setText("INCLUIR");
-        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+        lvltpPagamento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lvltpPagamento.setText("Tipo de Pagamento:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        radioDespesa.setText("Despesa");
+        radioDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIncluirActionPerformed(evt);
+                radioDespesaActionPerformed(evt);
             }
         });
 
-        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(radioReceita);
+        radioReceita.setText("Receita");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Selecione a opção de entrada da movimentação:");
+
+        lblData.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblData.setText("Data:");
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
+        lblTPmovimetacao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblTPmovimetacao.setText("Tipo de Movimetação:");
+
+        lblValor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblValor.setText("Valor:");
+
+        jComboBoxTipoMovimentacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxTipoMovimentacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMatriculaActionPerformed(evt);
+                jComboBoxTipoMovimentacaoActionPerformed(evt);
             }
         });
 
-        lblData.setText("Data");
+        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
 
-        jLabel1.setText("Nome");
+        btnInserir_movimentacao.setText("Inserir");
 
-        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        btnVoltar_movimentacao.setText("Voltar");
 
-        btnAlterar.setText("ALTERAR");
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("E-mail");
-
-        btnDeletar.setText("DELETAR");
-        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeletarActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Curso");
-
-        jcbCursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jcbCursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbCursosActionPerformed(evt);
-            }
-        });
-
-        jtbAlunos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Título 1", "Título 2", "Título 3"
-            }
-        ));
-        jtbAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtbAlunosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jtbAlunos);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnInserir_movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(btnVoltar_movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(radioDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(radioReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lvltpPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxTipoMovimentacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTPmovimetacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblData)
+                            .addComponent(lblValor)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(256, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioDespesa)
+                    .addComponent(radioReceita))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTPmovimetacao)
+                    .addComponent(jComboBoxTipoMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lvltpPagamento)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblValor)
+                .addGap(17, 17, 17)
+                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInserir_movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar_movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblMovimentacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblMatricula, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMatricula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jcbCursos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(61, 61, 61))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblData)
-                            .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnIncluir)
-                                .addGap(43, 43, 43)
-                                .addComponent(btnAlterar)
-                                .addGap(49, 49, 49)
-                                .addComponent(btnDeletar))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 641, Short.MAX_VALUE))))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMatricula)
-                    .addComponent(jLabel2))
+                .addComponent(lblMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblData)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIncluir)
-                    .addComponent(btnAlterar)
-                    .addComponent(btnDeletar))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+    private void radioDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDespesaActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_radioDespesaActionPerformed
 
-        objAluno = new Aluno();
-
-        AlunoController alunoCon = new AlunoController(objAluno, null);
-
-        objAluno.setNom_aluno(txtNome.getText());
-
-        //objAluno.setDat_nasc(txtData.getText().toString());
-        objAluno.setEmail(txtEmail.getText());
-        alunoCon.incluirAluno(objAluno);
-        //atualizaUsuario();
-
-    }//GEN-LAST:event_btnIncluirActionPerformed
-
-    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
+    private void jComboBoxTipoMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoMovimentacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatriculaActionPerformed
-
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAlterarActionPerformed
-
-    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeletarActionPerformed
-
-    private void jcbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCursosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbCursosActionPerformed
-
-    private void jtbAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbAlunosMouseClicked
-        // TODO add your handling code here:
-
-        //pega a linha selecionada
-        int linhaSelecionada = jtbAlunos.getSelectedRow();
-        // Primeira coluna da linha
-        String coluna1 = jtbAlunos.getModel().getValueAt(linhaSelecionada, 0).toString();
-        Aluno objAluno = new Aluno();
-        AlunoController AlunoCon = new AlunoController(objAluno, null);
-
-        objAluno = AlunoCon.buscar(coluna1);
-
-        txtMatricula.setText(String.valueOf(objAluno.getMat_aluno()));
-        txtNome.setText(objAluno.getNom_aluno());
-        txtEmail.setText(objAluno.getEmail());
-        objComboCurso.SetaComboBox(String.valueOf(objAluno.getCod_curso()));
-
-        //txtNome
-
-        //basta agora chamar o método buscar, passando o COLUNA1 como parâmetro de consulta
-    }//GEN-LAST:event_jtbAlunosMouseClicked
+    }//GEN-LAST:event_jComboBoxTipoMovimentacaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,7 +226,6 @@ public class MovimentacaoView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MovimentacaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -275,22 +236,23 @@ public class MovimentacaoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnDeletar;
-    private javax.swing.JButton btnIncluir;
+    private javax.swing.JButton btnInserir_movimentacao;
+    private javax.swing.JButton btnVoltar_movimentacao;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxTipoMovimentacao;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcbCursos;
-    private javax.swing.JTable jtbAlunos;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblMatricula;
-    private javax.swing.JFormattedTextField txtData;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JFormattedTextField txtMatricula;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JLabel lblMovimentacao;
+    private javax.swing.JLabel lblTPmovimetacao;
+    private javax.swing.JLabel lblValor;
+    private javax.swing.JLabel lvltpPagamento;
+    private javax.swing.JRadioButton radioDespesa;
+    private javax.swing.JRadioButton radioReceita;
     // End of variables declaration//GEN-END:variables
 }

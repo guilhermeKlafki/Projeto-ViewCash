@@ -78,11 +78,11 @@
                       <Component id="txtDescricao_TPmovimentacao" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtTipoMvi" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                  <Component id="btnInserir_tpMovimentacao" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="btnVoltar_tpMovimentacao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnInserir_tpMovimentacao" min="-2" pref="92" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="btnVoltar_tpMovimentacao" min="-2" pref="92" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
