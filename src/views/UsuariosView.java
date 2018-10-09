@@ -50,8 +50,9 @@ public class UsuariosView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbUsuario = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        btnInserir = new javax.swing.JButton();
+        btnInserir_usuario = new javax.swing.JButton();
         btnVoltar_usuarios = new javax.swing.JButton();
+        btnExcluir_usuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,6 +67,12 @@ public class UsuariosView extends javax.swing.JFrame {
         jLabel1.setText("Nome");
 
         lblSenha.setText("Senha");
+
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Curso");
 
@@ -91,16 +98,24 @@ public class UsuariosView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtbUsuario);
 
-        jLabel4.setText("Lista dos alunos já cadastrados");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Usuários Cadastrados:");
 
-        btnInserir.setText("Inserir");
-        btnInserir.addActionListener(new java.awt.event.ActionListener() {
+        btnInserir_usuario.setText("Inserir");
+        btnInserir_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInserirActionPerformed(evt);
+                btnInserir_usuarioActionPerformed(evt);
             }
         });
 
         btnVoltar_usuarios.setText("Voltar");
+
+        btnExcluir_usuario.setText("Excluir");
+        btnExcluir_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluir_usuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,29 +125,36 @@ public class UsuariosView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnInserir)
-                                .addGap(23, 23, 23)
-                                .addComponent(btnVoltar_usuarios))
+                                .addComponent(btnInserir_usuario)
+                                .addGap(41, 41, 41)
+                                .addComponent(btnExcluir_usuario))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(lbllogin, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSenha)
-                            .addComponent(jLabel3)
-                            .addComponent(jcbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblSenha)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtSenha)
+                                    .addComponent(jcbCursos, 0, 159, Short.MAX_VALUE))
+                                .addGap(142, 142, 142))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addComponent(btnVoltar_usuarios)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,8 +177,9 @@ public class UsuariosView extends javax.swing.JFrame {
                     .addComponent(jcbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInserir)
-                    .addComponent(btnVoltar_usuarios))
+                    .addComponent(btnInserir_usuario)
+                    .addComponent(btnVoltar_usuarios)
+                    .addComponent(btnExcluir_usuario))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,7 +199,7 @@ public class UsuariosView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginActionPerformed
 
-    private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
+    private void btnInserir_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_usuarioActionPerformed
         // TODO add your handling code here:
         Usuario objUsuario = new Usuario();
         UsuarioController userCon = new UsuarioController(objUsuario, null);
@@ -187,7 +210,7 @@ public class UsuariosView extends javax.swing.JFrame {
         userCon.incluir(objUsuario);
         atualizaUsuario();
         
-    }//GEN-LAST:event_btnInserirActionPerformed
+    }//GEN-LAST:event_btnInserir_usuarioActionPerformed
 
     private void jtbUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbUsuarioMouseClicked
         // TODO add your handling code here:
@@ -196,6 +219,14 @@ public class UsuariosView extends javax.swing.JFrame {
 
    //basta agora chamar o método buscar, passando o COLUNA1 como parâmetro de consulta
     }//GEN-LAST:event_jtbUsuarioMouseClicked
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void btnExcluir_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_usuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluir_usuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,7 +270,8 @@ public class UsuariosView extends javax.swing.JFrame {
     }
                 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnInserir;
+    private javax.swing.JButton btnExcluir_usuario;
+    private javax.swing.JButton btnInserir_usuario;
     private javax.swing.JButton btnVoltar_usuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
