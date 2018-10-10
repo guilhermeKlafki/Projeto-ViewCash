@@ -17,6 +17,7 @@ import Connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import model.Aluno;
 import model.Usuario;
 
 /**
@@ -26,12 +27,67 @@ import model.Usuario;
 public class UsuarioController {
     
     Usuario objUsuario;
+    
     JTable jtbUsuarios = null;
     
     public UsuarioController(Usuario objUsuario, JTable jtbUsuarios) {
         this.objUsuario = objUsuario;
         this.jtbUsuarios = jtbUsuarios;
     }
+    
+    
+    
+    public Usuario buscar(String coluna1)
+    {
+        try {
+            ConnectionFactory.abreConexao();
+            ResultSet rs = null;
+
+            String SQL = "";
+            SQL = " SELECT cod_usu, nom_usu, login, senha ";
+            SQL += " FROM usuario ";
+            SQL += " WHERE cod_usu = '" + coluna1 + "'";
+
+            try{
+                System.out.println("Vai Executar Conexão em buscar Usuarios");
+                rs = ConnectionFactory.stmt.executeQuery(SQL);
+                System.out.println("Executou Conexão em buscar Usuarios");
+
+                objUsuario = new Usuario();
+                
+                if(rs.next() == true)
+                {
+                    objUsuario.setCodio(String.valueOf(rs.getInt(1)));
+                    objUsuario.setNome(rs.getString(2));
+                    objUsuario.setLogin(rs.getString(3));
+                    objUsuario.setSenha(rs.getString(4));
+                    
+                }
+                
+               
+            }
+
+            catch (SQLException ex )
+            {
+                System.out.println("ERRO de SQL: " + ex.getMessage().toString());
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage().toString());
+            return null;
+        }
+        
+        System.out.println ("Executou buscar visitante com sucesso");
+        return objUsuario;
+    }
+    
+    
+    
+    
+    
+    
+    
     
     public void PreencheUsuarios() {
 
@@ -41,6 +97,7 @@ public class UsuarioController {
         
         Vector<String> cabecalhos = new Vector<String>();
         Vector dadosTabela = new Vector();
+        cabecalhos.add("Codigo");
         cabecalhos.add("Login");
         cabecalhos.add("Nome");
         cabecalhos.add("Senha");
@@ -50,17 +107,18 @@ public class UsuarioController {
         try {
 
             String SQL = "";
-            SQL = " SELECT u.login, u.nome, u.senha ";
-            SQL += " FROM usuarios u";           
-            SQL += " ORDER BY u.nome ";
+            SQL = " SELECT u.cod_usu, u.login, u.nom_usu, u.senha ";
+            SQL += " FROM usuario u";           
+            SQL += " ORDER BY u.nom_usu ";
             
             result = ConnectionFactory.stmt.executeQuery(SQL);
 
             while (result.next()) {
                 Vector<Object> linha = new Vector<Object>();
-                linha.add(result.getString(1));
+                linha.add(result.getInt(1));
                 linha.add(result.getString(2));
                 linha.add(result.getString(3));
+                linha.add(result.getString(4));
                 dadosTabela.add(linha);
             }
             
@@ -133,7 +191,7 @@ public class UsuarioController {
        
         try {
             
-            stmt = con.prepareStatement("INSERT INTO usuarios (login, nome, senha)VALUES(?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO usuario (login, nom_usu, senha)VALUES(?,?,?)");
             stmt.setString(1, objUsuario.getLogin());
             stmt.setString(2, objUsuario.getNome());
             stmt.setString(3, objUsuario.getSenha());

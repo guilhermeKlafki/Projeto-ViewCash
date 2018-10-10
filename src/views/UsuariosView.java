@@ -6,7 +6,10 @@
 package views;
 
 
+import controller.AlunoController;
 import controller.UsuarioController;
+import ferramentas.CaixaDeDialogo;
+import model.Aluno;
 import model.Usuario;
 
 
@@ -19,6 +22,9 @@ public class UsuariosView extends javax.swing.JFrame {
     /**
      * Creates new form AlunosView
      */
+    
+    Usuario objUsuario;
+    
     public UsuariosView() {
         initComponents();
         
@@ -45,8 +51,6 @@ public class UsuariosView extends javax.swing.JFrame {
         txtSenha = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jcbCursos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbUsuario = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
@@ -71,15 +75,6 @@ public class UsuariosView extends javax.swing.JFrame {
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Curso");
-
-        jcbCursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jcbCursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbCursosActionPerformed(evt);
             }
         });
 
@@ -138,11 +133,9 @@ public class UsuariosView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblSenha)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtSenha)
-                                    .addComponent(jcbCursos, 0, 159, Short.MAX_VALUE))
+                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(142, 142, 142))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(107, 107, 107)
@@ -168,14 +161,10 @@ public class UsuariosView extends javax.swing.JFrame {
                     .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInserir_usuario)
                     .addComponent(btnVoltar_usuarios)
@@ -190,10 +179,6 @@ public class UsuariosView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jcbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCursosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbCursosActionPerformed
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
@@ -212,9 +197,35 @@ public class UsuariosView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnInserir_usuarioActionPerformed
 
+     private void preencheCampos() {
+        try {
+            txtSenha.setText(objUsuario.getSenha());
+            txtNome.setText(objUsuario.getNome());
+            txtLogin.setText(objUsuario.getLogin());
+            
+
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+        }
+    }
+    
     private void jtbUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbUsuarioMouseClicked
-        // TODO add your handling code here:
+   
         //pega a linha selecionada
+   int linhaSelecionada = jtbUsuario.getSelectedRow();
+   // Primeira coluna da linha
+   String coluna1 = jtbUsuario.getModel().getValueAt(linhaSelecionada, 0).toString();
+   Usuario objUsuario = new Usuario();
+  UsuarioController UsuarioCon = new UsuarioController(objUsuario, null);
+ 
+  
+   objUsuario = UsuarioCon.buscar(coluna1);
+   
+   preencheCampos();
+    //txtMatricula.setText(String.valueOf(objAluno.getMat_aluno()));
+    txtNome.setText(objUsuario.getNome());
+    txtLogin.setText(objUsuario.getLogin());
+    txtSenha.setText(objUsuario.getSenha());
   
 
    //basta agora chamar o método buscar, passando o COLUNA1 como parâmetro de consulta
@@ -274,10 +285,8 @@ public class UsuariosView extends javax.swing.JFrame {
     private javax.swing.JButton btnInserir_usuario;
     private javax.swing.JButton btnVoltar_usuarios;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcbCursos;
     private javax.swing.JTable jtbUsuario;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lbllogin;

@@ -14,6 +14,15 @@ public class Usuario {
     private String nome;
     private String login;
     private String senha;
+    private String codio;
+
+    public String getCodio() {
+        return codio;
+    }
+
+    public void setCodio(String codio) {
+        this.codio = codio;
+    }
 
     public String getSenha() {
         return senha;

@@ -87,6 +87,7 @@ public class LoginView extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(0, 102, 255));
 
+        lblTelaAcesso.setBackground(new java.awt.Color(0, 0, 0));
         lblTelaAcesso.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblTelaAcesso.setForeground(new java.awt.Color(255, 255, 255));
         lblTelaAcesso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
