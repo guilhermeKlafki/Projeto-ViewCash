@@ -78,7 +78,7 @@ public class UsuarioController {
             return null;
         }
         
-        System.out.println ("Executou buscar visitante com sucesso");
+        System.out.println ("Executou buscar usuarios com sucesso");
         return objUsuario;
     }
     
@@ -209,7 +209,34 @@ public class UsuarioController {
         
     
     }
+        
+        public boolean excluir(String id){
+        
+        ConnectionFactory.abreConexao();
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try{
+            stmt = con.prepareStatement("DELETE usuario WHERE cod_usu=?");
+            stmt.setString(1, objUsuario.getCodio());
+            //stmt = con.prepareStatement("UPDATE aluno SET dataExclusao=? WHERE mat_alu=?");
+            //stmt.setString(1, objAluno.getDataExclusao());
+            //stmt.setInt(2, objAluno.getMat_aluno());
+                        
+            stmt.executeUpdate();
             
+            return true;
+            
+        }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        
+    }
+        
+                      
 
 
 }

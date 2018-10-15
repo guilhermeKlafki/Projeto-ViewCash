@@ -28,8 +28,8 @@ public class LoginController {
         ResultSet rs = null;
 
            StringBuilder sql = new StringBuilder();
-           sql.append(" SELECT login, nome");
-           sql.append(" FROM usuarios");
+           sql.append(" SELECT login, senha, nom_usu");
+           sql.append(" FROM usuario");
            sql.append(" WHERE login = '" + usuario + "' ");
            sql.append(" AND senha = '" + senha + "'");
      
@@ -42,7 +42,7 @@ public class LoginController {
             if (rs.next() == true) {
              user = new Usuario();
              user.setLogin(rs.getString("login"));
-             user.setNome(rs.getString("nome"));
+             user.setNome(rs.getString("nom_usu"));
             }
             
         } catch (SQLException ex) {

@@ -50,17 +50,20 @@ public class UsuariosView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtSenha = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbUsuario = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         btnInserir_usuario = new javax.swing.JButton();
         btnVoltar_usuarios = new javax.swing.JButton();
         btnExcluir_usuario = new javax.swing.JButton();
+        lblCodigo = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        btnLimpar_usuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lbllogin.setText("Login");
+        lbllogin.setText("Login:");
 
         txtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,13 +71,14 @@ public class UsuariosView extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nome");
+        jLabel1.setText("Nome:");
 
-        lblSenha.setText("Senha");
+        lblSenha.setText("Senha:");
 
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigo.setEditable(false);
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
+                txtCodigoActionPerformed(evt);
             }
         });
 
@@ -97,6 +101,7 @@ public class UsuariosView extends javax.swing.JFrame {
         jLabel4.setText("Usuários Cadastrados:");
 
         btnInserir_usuario.setText("Inserir");
+        btnInserir_usuario.setPreferredSize(new java.awt.Dimension(80, 28));
         btnInserir_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInserir_usuarioActionPerformed(evt);
@@ -104,11 +109,29 @@ public class UsuariosView extends javax.swing.JFrame {
         });
 
         btnVoltar_usuarios.setText("Voltar");
+        btnVoltar_usuarios.setPreferredSize(new java.awt.Dimension(80, 28));
 
         btnExcluir_usuario.setText("Excluir");
+        btnExcluir_usuario.setPreferredSize(new java.awt.Dimension(80, 28));
         btnExcluir_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluir_usuarioActionPerformed(evt);
+            }
+        });
+
+        lblCodigo.setText("Codigo:");
+
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+
+        btnLimpar_usuario.setText("Limpar");
+        btnLimpar_usuario.setPreferredSize(new java.awt.Dimension(80, 28));
+        btnLimpar_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpar_usuarioActionPerformed(evt);
             }
         });
 
@@ -120,55 +143,69 @@ public class UsuariosView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnInserir_usuario)
-                                .addGap(41, 41, 41)
-                                .addComponent(btnExcluir_usuario))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lbllogin, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblSenha)
-                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(142, 142, 142))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(107, 107, 107)
-                                .addComponent(btnVoltar_usuarios)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCodigo, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(btnInserir_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpar_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(btnExcluir_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(btnVoltar_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSenha)
+                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbllogin)
+                                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(148, 148, 148))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenha)
+                    .addComponent(lblCodigo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbllogin)
-                    .addComponent(lblSenha))
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInserir_usuario)
-                    .addComponent(btnVoltar_usuarios)
-                    .addComponent(btnExcluir_usuario))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnVoltar_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnExcluir_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnInserir_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLimpar_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,18 +227,49 @@ public class UsuariosView extends javax.swing.JFrame {
         UsuarioController userCon = new UsuarioController(objUsuario, null);
         
         objUsuario.setLogin(txtLogin.getText());
-        objUsuario.setNome(txtNome.getText());
+        objUsuario.setNome(txtCodigo.getText());
         objUsuario.setSenha(txtSenha.getText());
         userCon.incluir(objUsuario);
         atualizaUsuario();
         
     }//GEN-LAST:event_btnInserir_usuarioActionPerformed
 
+    
+     private void guardarDados() {
+        try {
+            objUsuario = new Usuario();
+            objUsuario.setCodio(txtCodigo.getText());
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setSenha(txtSenha.getText());
+            objUsuario.setLogin(txtLogin.getText());
+            
+        }catch(Exception ex){
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Problemas no guardaDados: " + ex.getMessage());
+        }
+    }
+    
+    private void limparTela() {
+        try {
+            //LIMPAR OS CAMPOS DA TELA
+            //LIBERAR O CAMPO MATRICULA
+
+            txtCodigo.setText("");
+            txtLogin.setText("");
+            txtNome.setText("");
+            txtSenha.setText("");
+            
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+        }
+    }
+
+    
      private void preencheCampos() {
         try {
             txtSenha.setText(objUsuario.getSenha());
             txtNome.setText(objUsuario.getNome());
             txtLogin.setText(objUsuario.getLogin());
+            txtCodigo.setText(objUsuario.getCodio());
             
 
         } catch (Exception ex) {
@@ -215,29 +283,48 @@ public class UsuariosView extends javax.swing.JFrame {
    int linhaSelecionada = jtbUsuario.getSelectedRow();
    // Primeira coluna da linha
    String coluna1 = jtbUsuario.getModel().getValueAt(linhaSelecionada, 0).toString();
-   Usuario objUsuario = new Usuario();
-  UsuarioController UsuarioCon = new UsuarioController(objUsuario, null);
  
-  
+   //basta agora chamar o método buscar, passando o COLUNA1 como parâmetro de consulta
+  UsuarioController UsuarioCon = new UsuarioController(null, null);  
    objUsuario = UsuarioCon.buscar(coluna1);
    
    preencheCampos();
-    //txtMatricula.setText(String.valueOf(objAluno.getMat_aluno()));
-    txtNome.setText(objUsuario.getNome());
-    txtLogin.setText(objUsuario.getLogin());
-    txtSenha.setText(objUsuario.getSenha());
+   
   
 
    //basta agora chamar o método buscar, passando o COLUNA1 como parâmetro de consulta
     }//GEN-LAST:event_jtbUsuarioMouseClicked
 
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void btnExcluir_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_usuarioActionPerformed
+       
+        guardarDados();
+        String id = txtCodigo.getText();
+        UsuarioController objUsuarioCon = new UsuarioController(null, null);
+        try {
+            if (objUsuarioCon.excluir(id) == true) {
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Usuario removido com Sucesso!");
+            } else {
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao remover aluno!");
+            }
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+        }
+        
+         limparTela();
+        
+    }//GEN-LAST:event_btnExcluir_usuarioActionPerformed
+
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void btnExcluir_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_usuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluir_usuarioActionPerformed
+    private void btnLimpar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar_usuarioActionPerformed
+        limparTela();
+    }//GEN-LAST:event_btnLimpar_usuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,13 +370,16 @@ public class UsuariosView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir_usuario;
     private javax.swing.JButton btnInserir_usuario;
+    private javax.swing.JButton btnLimpar_usuario;
     private javax.swing.JButton btnVoltar_usuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbUsuario;
+    private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lbllogin;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JFormattedTextField txtLogin;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSenha;
