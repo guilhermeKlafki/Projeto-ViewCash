@@ -31,6 +31,7 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView() {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
+        
     }
 
     /**
@@ -91,13 +92,13 @@ public class LoginView extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(0, 102, 255));
 
-        lblTelaAcesso.setBackground(new java.awt.Color(0, 0, 0));
+        lblTelaAcesso.setBackground(new java.awt.Color(153, 255, 102));
         lblTelaAcesso.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblTelaAcesso.setForeground(new java.awt.Color(255, 255, 255));
         lblTelaAcesso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTelaAcesso.setText("Tela de Acesso");
 
-        jLabel1.setBackground(new java.awt.Color(153, 0, 255));
+        jLabel1.setBackground(new java.awt.Color(255, 102, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/user.png"))); // NOI18N
 
@@ -140,7 +141,7 @@ public class LoginView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(187, 187, 187)
+                .addGap(184, 184, 184)
                 .addComponent(lblLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,7 +153,7 @@ public class LoginView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         pack();
