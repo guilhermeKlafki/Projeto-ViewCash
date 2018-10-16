@@ -15,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import Connection.ConnectionFactory;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.Aluno;
@@ -25,13 +24,13 @@ import model.Usuario;
  *
  * @author jonasdhein
  */
-public class UsuarioController {
+public class tpMovimentacaoController {
     
     Usuario objUsuario;
     
     JTable jtbUsuarios = null;
     
-    public UsuarioController(Usuario objUsuario, JTable jtbUsuarios) {
+    public tpMovimentacaoController(Usuario objUsuario, JTable jtbUsuarios) {
         this.objUsuario = objUsuario;
         this.jtbUsuarios = jtbUsuarios;
     }
@@ -209,34 +208,6 @@ public class UsuarioController {
         }
         
     
-    }
-        
-         public boolean alterar(Usuario objUsuario){
-        
-        ConnectionFactory.abreConexao();
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
-       
-        try {
-            
-            stmt = con.prepareStatement("UPDATE usuario SET login=?, nom_usu=?, senha=? WHERE cod_usu=?");
-            stmt.setString(1, objUsuario.getLogin());
-            stmt.setString(2, objUsuario.getNome());
-            stmt.setString(3, objUsuario.getSenha());
-            stmt.setInt(4, Integer.valueOf(objUsuario.getCodio()));
-            
-            stmt.executeUpdate();
-            
-            return true;
-            
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            return false;
-        }finally{
-            ConnectionFactory.closeConnection(con, stmt);
-        }
-        
-        
     }
         
         public boolean excluir(String id){
