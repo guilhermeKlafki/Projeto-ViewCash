@@ -84,6 +84,11 @@ public class LoginView extends javax.swing.JFrame {
         btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("Cadastrar-se");
         btnCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         jPanel6.setBackground(new java.awt.Color(0, 102, 255));
 
@@ -187,6 +192,11 @@ public class LoginView extends javax.swing.JFrame {
             }
          
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        UsuariosView tela = new UsuariosView();
+                tela.setVisible(true);
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -98,8 +98,8 @@ public class UsuarioController {
         Vector<String> cabecalhos = new Vector<String>();
         Vector dadosTabela = new Vector();
         cabecalhos.add("Codigo");
-        cabecalhos.add("Login");
         cabecalhos.add("Nome");
+        cabecalhos.add("login");
         cabecalhos.add("Senha");
         
         ResultSet result = null;
@@ -107,7 +107,7 @@ public class UsuarioController {
         try {
 
             String SQL = "";
-            SQL = " SELECT u.cod_usu, u.login, u.nom_usu, u.senha ";
+            SQL = " SELECT u.cod_usu, u.nom_usu, u.login, u.senha ";
             SQL += " FROM usuario u";           
             SQL += " ORDER BY u.nom_usu ";
             
