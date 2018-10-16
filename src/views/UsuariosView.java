@@ -351,19 +351,13 @@ public class UsuariosView extends javax.swing.JFrame {
 
     private void btnExcluir_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_usuarioActionPerformed
        
-        guardarDados();
-        String id = txtCodigo.getText();
-        UsuarioController objUsuarioCon = new UsuarioController(null, null);
-        try {
-            if (objUsuarioCon.excluir(id) == true) {
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Usuario removido com Sucesso!");
-            } else {
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao remover aluno!");
-            }
-        } catch (Exception ex) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
-        }
+        objUsuario = new Usuario();
+        UsuarioController userCon = new UsuarioController(objUsuario, null);
         
+        
+        objUsuario.setCodio(txtCodigo.getText());
+        userCon.excluir(objUsuario);
+        atualizaUsuario();
          limparTela();
         
     }//GEN-LAST:event_btnExcluir_usuarioActionPerformed
@@ -392,6 +386,7 @@ public class UsuariosView extends javax.swing.JFrame {
         objUsuario.setCodio(txtCodigo.getText());
         userCon.alterar(objUsuario);
         atualizaUsuario();
+        limparTela();
     }//GEN-LAST:event_btnAlterar_usuarioActionPerformed
 
     /**

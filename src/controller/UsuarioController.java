@@ -239,18 +239,16 @@ public class UsuarioController {
         
     }
         
-        public boolean excluir(String id){
+        public boolean excluir(Usuario objUsuário){
         
         ConnectionFactory.abreConexao();
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try{
-            stmt = con.prepareStatement("DELETE usuario WHERE cod_usu=?");
-            stmt.setString(1, objUsuario.getCodio());
-            //stmt = con.prepareStatement("UPDATE aluno SET dataExclusao=? WHERE mat_alu=?");
-            //stmt.setString(1, objAluno.getDataExclusao());
-            //stmt.setInt(2, objAluno.getMat_aluno());
+            stmt = con.prepareStatement("DELETE FROM usuario WHERE cod_usu=?");
+            stmt.setInt(1, Integer.valueOf(objUsuario.getCodio()));
+            
                         
             stmt.executeUpdate();
             
