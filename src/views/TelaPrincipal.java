@@ -31,8 +31,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblNomeUsu_principal = new javax.swing.JLabel();
+        txtNomeUsuario_principal = new javax.swing.JLabel();
+        lblReceitaMes_principal = new javax.swing.JLabel();
+        txtReceitaTotal_principal = new javax.swing.JLabel();
+        txtReceitaMes_principal = new javax.swing.JLabel();
+        lblReceitaTota_principal = new javax.swing.JLabel();
+        lblDespesaTota_principal = new javax.swing.JLabel();
+        txtDespesaMes_principal = new javax.swing.JLabel();
+        txtDespesaTotal_principal = new javax.swing.JLabel();
+        lblDespesaMes_principal = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuAlunos = new javax.swing.JMenuItem();
@@ -40,11 +50,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuProfessores = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuSair = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
 
-        jLabel1.setText("Usuário:");
+        lblNomeUsu_principal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNomeUsu_principal.setText("Nome do Usuário:");
+
+        lblReceitaMes_principal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblReceitaMes_principal.setText("Valor Receita Mes:");
+
+        txtReceitaTotal_principal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+        lblReceitaTota_principal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblReceitaTota_principal.setText("Valor Receita Total:");
+
+        lblDespesaTota_principal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblDespesaTota_principal.setText("Valor Despesa Total:");
+
+        lblDespesaMes_principal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblDespesaMes_principal.setText("Valor Despesa Mes:");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         jMenu1.setText("Cadastros");
 
@@ -82,13 +122,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Sair");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        jMenu2.setText("Relaórios");
+        jMenuBar1.add(jMenu2);
+
+        jMenuSair.setText("Sair");
+        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                jMenuSairActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+
+        jMenuItem2.setText("Sair do Sistema");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenuSair.add(jMenuItem2);
+
+        jMenuBar1.add(jMenuSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -98,19 +150,62 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(446, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDespesaTota_principal)
+                            .addComponent(lblDespesaMes_principal))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDespesaMes_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDespesaTotal_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNomeUsu_principal)
+                                    .addComponent(lblReceitaMes_principal))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNomeUsuario_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtReceitaMes_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblReceitaTota_principal)
+                                .addGap(36, 36, 36)
+                                .addComponent(txtReceitaTotal_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNomeUsu_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomeUsuario_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblReceitaMes_principal)
+                            .addComponent(txtReceitaMes_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblReceitaTota_principal)
+                            .addComponent(txtReceitaTotal_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(248, 248, 248)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDespesaTota_principal)
+                    .addComponent(txtDespesaTotal_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDespesaMes_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDespesaMes_principal))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,9 +234,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tipomovi.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
+        
+    }//GEN-LAST:event_jMenuSairActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       System.exit(0);        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,14 +278,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu jMenuSair;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblDespesaMes_principal;
+    private javax.swing.JLabel lblDespesaTota_principal;
+    private javax.swing.JLabel lblNomeUsu_principal;
+    private javax.swing.JLabel lblReceitaMes_principal;
+    private javax.swing.JLabel lblReceitaTota_principal;
     private javax.swing.JMenuItem menuAlunos;
     private javax.swing.JMenuItem menuProfessores;
     private javax.swing.JMenuItem menuUsuarios;
+    private javax.swing.JLabel txtDespesaMes_principal;
+    private javax.swing.JLabel txtDespesaTotal_principal;
+    private javax.swing.JLabel txtNomeUsuario_principal;
+    private javax.swing.JLabel txtReceitaMes_principal;
+    private javax.swing.JLabel txtReceitaTotal_principal;
     // End of variables declaration//GEN-END:variables
 }

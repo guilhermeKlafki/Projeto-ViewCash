@@ -9,6 +9,7 @@ package views;
 import controller.AlunoController;
 import controller.UsuarioController;
 import ferramentas.CaixaDeDialogo;
+import javax.swing.JOptionPane;
 import model.Aluno;
 import model.Usuario;
 
@@ -34,6 +35,8 @@ public class UsuariosView extends javax.swing.JFrame {
         //Carregar os alunos existentes
         UsuarioController usuarioCon = new UsuarioController(null, jtbUsuario);
         usuarioCon.PreencheUsuarios();
+        limparTela();
+        
     }
 
     /**
@@ -101,12 +104,6 @@ public class UsuariosView extends javax.swing.JFrame {
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCodigo.setText("Codigo:");
-
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Nome:");
@@ -273,14 +270,24 @@ public class UsuariosView extends javax.swing.JFrame {
 
     private void btnInserir_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_usuarioActionPerformed
         // TODO add your handling code here:
-        objUsuario = new Usuario();
-        UsuarioController userCon = new UsuarioController(objUsuario, null);
+        if (verificarCampos() == false) {
+            
+            objUsuario = new Usuario();
+            UsuarioController userCon = new UsuarioController(objUsuario, null);
         
-        objUsuario.setLogin(txtLogin.getText());
-        objUsuario.setNome(txtNome.getText());
-        objUsuario.setSenha(txtSenha.getText());
-        userCon.incluir(objUsuario);
-        atualizaUsuario();
+            objUsuario.setLogin(txtLogin.getText());
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setSenha(txtSenha.getText());
+            userCon.incluir(objUsuario);
+            atualizaUsuario();                       
+              
+            JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+            
+       
+        
+        
         
     }//GEN-LAST:event_btnInserir_usuarioActionPerformed
 
@@ -307,6 +314,9 @@ public class UsuariosView extends javax.swing.JFrame {
             txtLogin.setText("");
             txtNome.setText("");
             txtSenha.setText("");
+            // Não deixa o botão Alterar aparecer na tela
+            btnAlterar_usuario.setVisible(false);
+            btnExcluir_usuario.setVisible(false);
             
         } catch (Exception ex) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
@@ -320,7 +330,10 @@ public class UsuariosView extends javax.swing.JFrame {
             txtNome.setText(objUsuario.getNome());
             txtLogin.setText(objUsuario.getLogin());
             txtCodigo.setText(objUsuario.getCodio());
-            
+            // Deixa o botão Alterar aparecer na tela
+            btnAlterar_usuario.setVisible(true);
+            btnExcluir_usuario.setVisible(true);
+            btnInserir_usuario.setVisible(false);
 
         } catch (Exception ex) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
@@ -350,22 +363,53 @@ public class UsuariosView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnExcluir_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_usuarioActionPerformed
+        
+        if (txtCodigo.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Excuir !", "Erro", JOptionPane.ERROR_MESSAGE);
+            
+        }else {
+            objUsuario = new Usuario();
+            UsuarioController userCon = new UsuarioController(objUsuario, null);        
+            objUsuario.setCodio(txtCodigo.getText());
+            userCon.excluir(objUsuario);
+            atualizaUsuario();
+            limparTela();
+        }
        
-        objUsuario = new Usuario();
-        UsuarioController userCon = new UsuarioController(objUsuario, null);
         
-        
-        objUsuario.setCodio(txtCodigo.getText());
-        userCon.excluir(objUsuario);
-        atualizaUsuario();
-         limparTela();
         
     }//GEN-LAST:event_btnExcluir_usuarioActionPerformed
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
+    public boolean verificarCampos() {
+        if (txtNome.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Nome está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txtNome.requestFocus();
+            return true;           
+        }if (txtLogin.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Login está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txtLogin.requestFocus();
+            return true;
+        }if (txtSenha.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Senha está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txtSenha.requestFocus();
+            return true;
+        }
+        return false;
+    }
+    
+    
+        /*
+}else if(this.frm.getTxtNumAutoInfr().getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Número da Infração está em branco.", "Erro", JOptionPane.ERROR_MESSAGE);
+            this.frm.getTxtNumAutoInfr().requestFocus();
+            return false;  
+}else if(this.frm.getTxtPlaca().getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Placa está em branco.", "Erro", JOptionPane.ERROR_MESSAGE);
+            this.frm.getTxtPlaca().requestFocus();
+            return false;
+        
+        */
+  
     private void btnLimpar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar_usuarioActionPerformed
         limparTela();
     }//GEN-LAST:event_btnLimpar_usuarioActionPerformed
@@ -377,16 +421,24 @@ public class UsuariosView extends javax.swing.JFrame {
 
     private void btnAlterar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar_usuarioActionPerformed
         
-        objUsuario = new Usuario();
-        UsuarioController userCon = new UsuarioController(objUsuario, null);
+        if (txtCodigo.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Alterar !", "Erro", JOptionPane.ERROR_MESSAGE);
+            
+        }if(verificarCampos() == false) {
+           
+           // verificarCampos() ==
         
-        objUsuario.setLogin(txtLogin.getText());
-        objUsuario.setNome(txtNome.getText());
-        objUsuario.setSenha(txtSenha.getText());
-        objUsuario.setCodio(txtCodigo.getText());
-        userCon.alterar(objUsuario);
-        atualizaUsuario();
-        limparTela();
+            objUsuario = new Usuario();
+            UsuarioController userCon = new UsuarioController(objUsuario, null);
+        
+            objUsuario.setLogin(txtLogin.getText());
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setSenha(txtSenha.getText());
+            objUsuario.setCodio(txtCodigo.getText());
+            userCon.alterar(objUsuario);
+            atualizaUsuario();
+            limparTela();
+        }
     }//GEN-LAST:event_btnAlterar_usuarioActionPerformed
 
     /**
