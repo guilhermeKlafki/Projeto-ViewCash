@@ -253,7 +253,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
 
     private void btnInserir_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_tpMoviActionPerformed
         // TODO add your handling code here:
-        if (verificarCampos() == false) {
+       /* if (verificarCampos() == false) {
 
             objUsuario = new Usuario();
             UsuarioController userCon = new UsuarioController(objUsuario, null);
@@ -266,24 +266,25 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
         }
-
+           */ 
     }//GEN-LAST:event_btnInserir_tpMoviActionPerformed
 
     private void btnLimpar_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar_tpMoviActionPerformed
-        limparTela();
+        //limparTela();
     }//GEN-LAST:event_btnLimpar_tpMoviActionPerformed
 
     private void btnExcluir_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_tpMoviActionPerformed
 
         // (txtCodigo.getText().trim().equals(""))
         // JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Excuir !", "Erro", JOptionPane.ERROR_MESSAGE);
-
+/*
         objUsuario = new Usuario();
         UsuarioController userCon = new UsuarioController(objUsuario, null);
         objUsuario.setCodio(txtCodigo_tpMovi.getText());
         userCon.excluir(objUsuario);
         atualizaUsuario();
         limparTela();
+        */
 
     }//GEN-LAST:event_btnExcluir_tpMoviActionPerformed
 
@@ -299,7 +300,8 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Alterar !", "Erro", JOptionPane.ERROR_MESSAGE);
 
         }*/
-        if(verificarCampos() == false) {
+        
+       /* if(verificarCampos() == false) {
 
             objUsuario = new Usuario();
             UsuarioController userCon = new UsuarioController(objUsuario, null);
@@ -311,7 +313,9 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
             userCon.alterar(objUsuario);
             atualizaUsuario();
             limparTela();
+        
         }
+        */
     }//GEN-LAST:event_btnAlterar_tpMoviActionPerformed
 
     /**

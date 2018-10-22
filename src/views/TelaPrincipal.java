@@ -47,7 +47,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         menuAlunos = new javax.swing.JMenuItem();
         menuUsuarios = new javax.swing.JMenuItem();
-        menuProfessores = new javax.swing.JMenuItem();
+        menuTpPagamento = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
@@ -104,13 +104,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(menuUsuarios);
 
-        menuProfessores.setText("Professores");
-        menuProfessores.addActionListener(new java.awt.event.ActionListener() {
+        menuTpPagamento.setText("Tipo de Pagamento");
+        menuTpPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuProfessoresActionPerformed(evt);
+                menuTpPagamentoActionPerformed(evt);
             }
         });
-        jMenu1.add(menuProfessores);
+        jMenu1.add(menuTpPagamento);
 
         jMenuItem1.setText("Tipo de Movimentação");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -183,9 +183,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNomeUsu_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNomeUsuario_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNomeUsuario_principal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNomeUsu_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblReceitaMes_principal)
@@ -218,9 +218,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         alunos.setVisible(true);
     }//GEN-LAST:event_menuAlunosActionPerformed
 
-    private void menuProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProfessoresActionPerformed
+    private void menuTpPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTpPagamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuProfessoresActionPerformed
+        TipoPagamentoView TpPagamento = new TipoPagamentoView();
+        TpPagamento.setVisible(true);
+        
+    }//GEN-LAST:event_menuTpPagamentoActionPerformed
 
     private void menuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuariosActionPerformed
         // TODO add your handling code here:
@@ -292,7 +295,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblReceitaMes_principal;
     private javax.swing.JLabel lblReceitaTota_principal;
     private javax.swing.JMenuItem menuAlunos;
-    private javax.swing.JMenuItem menuProfessores;
+    private javax.swing.JMenuItem menuTpPagamento;
     private javax.swing.JMenuItem menuUsuarios;
     private javax.swing.JLabel txtDespesaMes_principal;
     private javax.swing.JLabel txtDespesaTotal_principal;

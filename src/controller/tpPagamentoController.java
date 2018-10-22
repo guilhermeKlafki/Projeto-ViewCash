@@ -38,7 +38,7 @@ public class tpPagamentoController {
     
     
     
-    public tpPagamento buscarTpPag(String coluna1)
+    public tpPagamento buscarTpPag(String coluna2)
     {
         try {
             ConnectionFactory.abreConexao();
@@ -46,8 +46,8 @@ public class tpPagamentoController {
 
             String SQL = "";
             SQL = " SELECT cod_tppag, nom_tppag ";
-            SQL += " FROM tp_pagamento ";
-            SQL += " WHERE cod_tppag = '" + coluna1 + "'";
+            SQL += " FROM tipo_pagamento ";
+            SQL += " WHERE cod_tppag = '" + coluna2 + "'";
 
             try{
                 System.out.println("Vai Executar Conexão em buscar Tipo de Pagamento");

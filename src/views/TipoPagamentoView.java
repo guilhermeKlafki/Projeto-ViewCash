@@ -296,14 +296,14 @@ public class TipoPagamentoView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jSeparator1)
-            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,9 +311,9 @@ public class TipoPagamentoView extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(41, 41, 41)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(63, 63, 63)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
         );
@@ -357,7 +357,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             tppagCon.incluir(objTpPagamento);
             atualizaTpPagamento();
 
-            JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Tipo de Pagamento inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnInserir_tpPagActionPerformed
 
@@ -412,11 +412,11 @@ public class TipoPagamentoView extends javax.swing.JFrame {
         //pega a linha selecionada
    int linhaSelecionada = jtbTpPag.getSelectedRow();
    // Primeira coluna da linha
-   String coluna1 = jtbTpPag.getModel().getValueAt(linhaSelecionada, 0).toString();
+   String coluna2 = jtbTpPag.getModel().getValueAt(linhaSelecionada, 0).toString();
  
    //basta agora chamar o método buscar, passando o COLUNA1 como parâmetro de consulta
   tpPagamentoController tppagCon = new tpPagamentoController(null, null);  
-   objTpPagamento = tppagCon.buscarTpPag(coluna1);
+   objTpPagamento = tppagCon.buscarTpPag(coluna2);
    
    preencheCamposTpPag();
         
@@ -424,9 +424,9 @@ public class TipoPagamentoView extends javax.swing.JFrame {
     }//GEN-LAST:event_jtbTpPagMouseClicked
 
     public boolean verificarCamposTpPag() {
-        if (txtNome.getText().trim().equals("")) {
+        if (txtNome_TpPagamento.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo Nome está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
-            txtNome.requestFocus();
+            txtNome_TpPagamento.requestFocus();
             return true;           
         }
         return false;

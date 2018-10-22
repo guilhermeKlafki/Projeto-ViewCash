@@ -12,14 +12,14 @@ package model;
 public class tpPagamento {
     
     private String nome;
-    private String codio;
+    private String codigo;
 
     public String getCodio() {
-        return codio;
+        return codigo;
     }
 
     public void setCodio(String codio) {
-        this.codio = codio;
+        this.codigo = codio;
     }
 
 
