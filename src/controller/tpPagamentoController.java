@@ -38,7 +38,7 @@ public class tpPagamentoController {
     
     
     
-    public tpPagamento buscar(String coluna1)
+    public tpPagamento buscarTpPag(String coluna1)
     {
         try {
             ConnectionFactory.abreConexao();
@@ -88,7 +88,7 @@ public class tpPagamentoController {
     
     
     
-    public void PreencheUsuarios() {
+    public void PreencheUsuariosTpPag() {
 
         try{
             

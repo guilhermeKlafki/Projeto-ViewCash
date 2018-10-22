@@ -342,7 +342,7 @@ public class UsuariosView extends javax.swing.JFrame {
     
     private void jtbUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbUsuarioMouseClicked
    
-        //pega a linha selecionada
+   //pega a linha selecionada
    int linhaSelecionada = jtbUsuario.getSelectedRow();
    // Primeira coluna da linha
    String coluna1 = jtbUsuario.getModel().getValueAt(linhaSelecionada, 0).toString();

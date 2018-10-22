@@ -5,7 +5,10 @@
  */
 package views;
 
+import controller.tpPagamentoController;
+import ferramentas.CaixaDeDialogo;
 import javax.swing.JOptionPane;
+import model.tpPagamento;
 
 /**
  *
@@ -13,11 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class TipoPagamentoView extends javax.swing.JFrame {
 
+    tpPagamento objTpPagamento; 
+    
     /**
      * Creates new form TipoPagamentoView
      */
     public TipoPagamentoView() {
         initComponents();
+        tpPagamentoController tppagCon = new tpPagamentoController(null, jtbTpPag);
+        tppagCon.PreencheUsuariosTpPag();
+        limparTelaTpPag();
     }
 
     /**
@@ -49,7 +57,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         lblTipoPagamento = new javax.swing.JLabel();
-        txtTPpagamento = new javax.swing.JTextField();
+        txtNome_TpPagamento = new javax.swing.JTextField();
         btnInserir_tpPag = new javax.swing.JButton();
         btnLimpar_tpPag = new javax.swing.JButton();
         btnExcluir_tpPag = new javax.swing.JButton();
@@ -204,7 +212,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTipoPagamento)
-                    .addComponent(txtTPpagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNome_TpPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodigo_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodigo_tpPag))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -237,7 +245,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblTipoPagamento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTPpagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNome_TpPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnVoltar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -256,6 +264,11 @@ public class TipoPagamentoView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtbTpPag.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbTpPagMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jtbTpPag);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -334,23 +347,22 @@ public class TipoPagamentoView extends javax.swing.JFrame {
 
     private void btnInserir_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_tpPagActionPerformed
         // TODO add your handling code here:
-        if (verificarCampos() == false) {
+        if (verificarCamposTpPag() == false) {
 
-            objUsuario = new Usuario();
-            UsuarioController userCon = new UsuarioController(objUsuario, null);
+            objTpPagamento = new tpPagamento();
+            tpPagamentoController tppagCon = new tpPagamentoController(null, jtbTpPag);
 
-            objUsuario.setLogin(txtLogin.getText());
-            objUsuario.setNome(txtNome.getText());
-            objUsuario.setSenha(txtSenha.getText());
-            userCon.incluir(objUsuario);
-            atualizaUsuario();
+            objTpPagamento.setNome(txtNome_TpPagamento.getText());
+            
+            tppagCon.incluir(objTpPagamento);
+            atualizaTpPagamento();
 
             JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnInserir_tpPagActionPerformed
 
     private void btnLimpar_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar_tpPagActionPerformed
-        limparTela();
+        limparTelaTpPag();
     }//GEN-LAST:event_btnLimpar_tpPagActionPerformed
 
     private void btnExcluir_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_tpPagActionPerformed
@@ -358,12 +370,12 @@ public class TipoPagamentoView extends javax.swing.JFrame {
         // (txtCodigo.getText().trim().equals(""))
         // JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Excuir !", "Erro", JOptionPane.ERROR_MESSAGE);
 
-        objUsuario = new Usuario();
-        UsuarioController userCon = new UsuarioController(objUsuario, null);
-        objUsuario.setCodio(txtCodigo_tpMovi.getText());
-        userCon.excluir(objUsuario);
-        atualizaUsuario();
-        limparTela();
+        objTpPagamento = new tpPagamento();
+        tpPagamentoController tppagCon = new tpPagamentoController(objTpPagamento, null);
+        objTpPagamento.setCodio(txtCodigo_tpPag.getText());
+        tppagCon.excluir(objTpPagamento);
+        atualizaTpPagamento();
+        limparTelaTpPag();
     }//GEN-LAST:event_btnExcluir_tpPagActionPerformed
 
     private void btnVoltar_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar_tpPagActionPerformed
@@ -377,18 +389,17 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Alterar !", "Erro", JOptionPane.ERROR_MESSAGE);
 
         }*/
-        if(verificarCampos() == false) {
+        if(verificarCamposTpPag() == false) {
 
-            objUsuario = new Usuario();
-            UsuarioController userCon = new UsuarioController(objUsuario, null);
+            objTpPagamento = new tpPagamento();
+             tpPagamentoController tppagCon = new tpPagamentoController(objTpPagamento, null);
 
-            objUsuario.setLogin(txtLogin.getText());
-            objUsuario.setNome(txtNome.getText());
-            objUsuario.setSenha(txtSenha.getText());
-            objUsuario.setCodio(txtCodigo_tpMovi.getText());
-            userCon.alterar(objUsuario);
-            atualizaUsuario();
-            limparTela();
+            
+            objTpPagamento.setNome(txtNome.getText());            
+            objTpPagamento.setCodio(txtCodigo_tpPag.getText());
+            tppagCon.alterar(objTpPagamento);
+            atualizaTpPagamento();
+            limparTelaTpPag();
         }
     }//GEN-LAST:event_btnAlterar_tpPagActionPerformed
 
@@ -396,13 +407,65 @@ public class TipoPagamentoView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigo_tpPagActionPerformed
 
-    public boolean verificarCampos() {
+    private void jtbTpPagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbTpPagMouseClicked
+        
+        //pega a linha selecionada
+   int linhaSelecionada = jtbTpPag.getSelectedRow();
+   // Primeira coluna da linha
+   String coluna1 = jtbTpPag.getModel().getValueAt(linhaSelecionada, 0).toString();
+ 
+   //basta agora chamar o método buscar, passando o COLUNA1 como parâmetro de consulta
+  tpPagamentoController tppagCon = new tpPagamentoController(null, null);  
+   objTpPagamento = tppagCon.buscarTpPag(coluna1);
+   
+   preencheCamposTpPag();
+        
+        
+    }//GEN-LAST:event_jtbTpPagMouseClicked
+
+    public boolean verificarCamposTpPag() {
         if (txtNome.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo Nome está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
             txtNome.requestFocus();
             return true;           
         }
         return false;
+    }
+    
+    public void atualizaTpPagamento(){
+        tpPagamentoController tppagCon = new tpPagamentoController(null, jtbTpPag);
+        tppagCon.PreencheUsuariosTpPag();
+    }
+    
+    private void limparTelaTpPag() {
+        try {
+            //LIMPAR OS CAMPOS DA TELA
+            //LIBERAR O CAMPO MATRICULA
+
+            txtCodigo_tpPag.setText("");
+            txtNome_TpPagamento.setText("");
+            
+            // Não deixa o botão Alterar aparecer na tela
+            btnAlterar_tpPag.setVisible(false);
+            btnExcluir_tpPag.setVisible(false);
+            btnInserir_tpPag.setVisible(true);
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+        }
+    }
+    
+     private void preencheCamposTpPag() {
+        try {
+            txtNome_TpPagamento.setText(objTpPagamento.getNome());
+            txtCodigo_tpPag.setText(objTpPagamento.getCodio());
+            // Deixa o botão Alterar aparecer na tela
+            btnAlterar_tpPag.setVisible(true);
+            btnExcluir_tpPag.setVisible(true);
+            btnInserir_tpPag.setVisible(false);
+
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+        }
     }
     
     
@@ -475,6 +538,6 @@ public class TipoPagamentoView extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JFormattedTextField txtMatricula;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtTPpagamento;
+    private javax.swing.JTextField txtNome_TpPagamento;
     // End of variables declaration//GEN-END:variables
 }
