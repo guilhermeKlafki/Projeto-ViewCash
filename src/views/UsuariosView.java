@@ -317,7 +317,7 @@ public class UsuariosView extends javax.swing.JFrame {
             // Não deixa o botão Alterar aparecer na tela
             btnAlterar_usuario.setVisible(false);
             btnExcluir_usuario.setVisible(false);
-            
+            btnInserir_usuario.setVisible(true);
         } catch (Exception ex) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
         }
