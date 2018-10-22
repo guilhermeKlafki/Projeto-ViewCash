@@ -456,6 +456,8 @@ public class TipoPagamentoView extends javax.swing.JFrame {
     
      private void preencheCamposTpPag() {
         try {
+            // atulização 18:44
+            
             txtNome_TpPagamento.setText(objTpPagamento.getNome());
             txtCodigo_tpPag.setText(objTpPagamento.getCodio());
             // Deixa o botão Alterar aparecer na tela
