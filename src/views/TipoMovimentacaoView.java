@@ -31,13 +31,17 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtTipoMvi = new javax.swing.JTextField();
+        txtTpMovi = new javax.swing.JTextField();
         lblDescricao = new javax.swing.JLabel();
-        btnInserir_tpMovimentacao = new javax.swing.JButton();
-        btnVoltar_tpMovimentacao = new javax.swing.JButton();
-        btnExcluir_tpMovimentacao = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDescricao_tpMovi = new javax.swing.JTextArea();
+        lblCodigo_tpMovi = new javax.swing.JLabel();
+        txtCodigo_tpMovi = new javax.swing.JTextField();
+        btnInserir_tpMovi = new javax.swing.JButton();
+        btnLimpar_tpMovi = new javax.swing.JButton();
+        btnExcluir_tpMovi = new javax.swing.JButton();
+        btnVoltar_tpMovi = new javax.swing.JButton();
+        btnAlterar_tpMovi = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTpMovimentacao = new javax.swing.JTable();
@@ -52,25 +56,71 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Nome do Tipo de Movimentação:");
 
-        txtTipoMvi.addActionListener(new java.awt.event.ActionListener() {
+        txtTpMovi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoMviActionPerformed(evt);
+                txtTpMoviActionPerformed(evt);
             }
         });
 
+        lblDescricao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblDescricao.setText("Descrição:");
 
-        btnInserir_tpMovimentacao.setText("Inserir");
+        txtDescricao_tpMovi.setColumns(20);
+        txtDescricao_tpMovi.setRows(5);
+        jScrollPane2.setViewportView(txtDescricao_tpMovi);
 
-        btnVoltar_tpMovimentacao.setText("Voltar");
+        lblCodigo_tpMovi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCodigo_tpMovi.setText("Codigo:");
 
-        btnExcluir_tpMovimentacao.setText("Excluir");
+        txtCodigo_tpMovi.setEditable(false);
+        txtCodigo_tpMovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigo_tpMoviActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        btnInserir_tpMovi.setText("Inserir");
+        btnInserir_tpMovi.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnInserir_tpMovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserir_tpMoviActionPerformed(evt);
+            }
+        });
+
+        btnLimpar_tpMovi.setText("Limpar");
+        btnLimpar_tpMovi.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnLimpar_tpMovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpar_tpMoviActionPerformed(evt);
+            }
+        });
+
+        btnExcluir_tpMovi.setText("Excluir");
+        btnExcluir_tpMovi.setPreferredSize(new java.awt.Dimension(80, 28));
+        btnExcluir_tpMovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluir_tpMoviActionPerformed(evt);
+            }
+        });
+
+        btnVoltar_tpMovi.setText("Voltar");
+        btnVoltar_tpMovi.setPreferredSize(new java.awt.Dimension(80, 28));
+        btnVoltar_tpMovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltar_tpMoviActionPerformed(evt);
+            }
+        });
+
+        btnAlterar_tpMovi.setText("Alterar");
+        btnAlterar_tpMovi.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnAlterar_tpMovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar_tpMoviActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,44 +129,52 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                        .addComponent(btnVoltar_tpMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblDescricao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExcluir_tpMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(txtTipoMvi, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnInserir_tpMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(129, 129, 129))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(lblDescricao)
+                            .addGap(215, 215, 215)))
+                    .addComponent(jLabel2)
+                    .addComponent(txtTpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCodigo_tpMovi))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInserir_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpar_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlterar_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(110, 110, 110))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTipoMvi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(btnInserir_tpMovimentacao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDescricao)
-                    .addComponent(btnExcluir_tpMovimentacao))
+                .addContainerGap()
+                .addComponent(lblCodigo_tpMovi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVoltar_tpMovimentacao))
+                .addComponent(txtCodigo_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDescricao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(btnInserir_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAlterar_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExcluir_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLimpar_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(btnVoltar_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -140,7 +198,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -148,27 +206,26 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setBackground(new java.awt.Color(102, 51, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastro de Tipo de Movimentação");
+        jLabel1.setText("Cadastro - Tipo de Movimentação");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,19 +233,86 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTipoMviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoMviActionPerformed
+    private void txtTpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTpMoviActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoMviActionPerformed
+    }//GEN-LAST:event_txtTpMoviActionPerformed
+
+    private void txtCodigo_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigo_tpMoviActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigo_tpMoviActionPerformed
+
+    private void btnInserir_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_tpMoviActionPerformed
+        // TODO add your handling code here:
+        if (verificarCampos() == false) {
+
+            objUsuario = new Usuario();
+            UsuarioController userCon = new UsuarioController(objUsuario, null);
+
+            objUsuario.setLogin(txtLogin.getText());
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setSenha(txtSenha.getText());
+            userCon.incluir(objUsuario);
+            atualizaUsuario();
+
+            JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnInserir_tpMoviActionPerformed
+
+    private void btnLimpar_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar_tpMoviActionPerformed
+        limparTela();
+    }//GEN-LAST:event_btnLimpar_tpMoviActionPerformed
+
+    private void btnExcluir_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_tpMoviActionPerformed
+
+        // (txtCodigo.getText().trim().equals(""))
+        // JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Excuir !", "Erro", JOptionPane.ERROR_MESSAGE);
+
+        objUsuario = new Usuario();
+        UsuarioController userCon = new UsuarioController(objUsuario, null);
+        objUsuario.setCodio(txtCodigo_tpMovi.getText());
+        userCon.excluir(objUsuario);
+        atualizaUsuario();
+        limparTela();
+
+    }//GEN-LAST:event_btnExcluir_tpMoviActionPerformed
+
+    private void btnVoltar_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar_tpMoviActionPerformed
+        dispose();
+
+    }//GEN-LAST:event_btnVoltar_tpMoviActionPerformed
+
+    private void btnAlterar_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar_tpMoviActionPerformed
+
+        /* Valida de o campo Codigo esta em Branco
+        if (txtCodigo.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Alterar !", "Erro", JOptionPane.ERROR_MESSAGE);
+
+        }*/
+        if(verificarCampos() == false) {
+
+            objUsuario = new Usuario();
+            UsuarioController userCon = new UsuarioController(objUsuario, null);
+
+            objUsuario.setLogin(txtLogin.getText());
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setSenha(txtSenha.getText());
+            objUsuario.setCodio(txtCodigo_tpMovi.getText());
+            userCon.alterar(objUsuario);
+            atualizaUsuario();
+            limparTela();
+        }
+    }//GEN-LAST:event_btnAlterar_tpMoviActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,9 +350,11 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExcluir_tpMovimentacao;
-    private javax.swing.JButton btnInserir_tpMovimentacao;
-    private javax.swing.JButton btnVoltar_tpMovimentacao;
+    private javax.swing.JButton btnAlterar_tpMovi;
+    private javax.swing.JButton btnExcluir_tpMovi;
+    private javax.swing.JButton btnInserir_tpMovi;
+    private javax.swing.JButton btnLimpar_tpMovi;
+    private javax.swing.JButton btnVoltar_tpMovi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -237,10 +363,12 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableTpMovimentacao;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel lblCodigo_tpMovi;
     private javax.swing.JLabel lblDescricao;
-    private javax.swing.JTextField txtTipoMvi;
+    private javax.swing.JTextField txtCodigo_tpMovi;
+    private javax.swing.JTextArea txtDescricao_tpMovi;
+    private javax.swing.JTextField txtTpMovi;
     // End of variables declaration//GEN-END:variables
 }

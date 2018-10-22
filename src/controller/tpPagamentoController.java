@@ -19,50 +19,48 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.Aluno;
-import model.Usuario;
+import model.tpPagamento;
 
 /**
  *
  * @author jonasdhein
  */
-public class tpMovimentacaoController {
+public class tpPagamentoController {
     
-    Usuario objUsuario;
+    tpPagamento objTpPagamento;
     
-    JTable jtbUsuarios = null;
+    JTable jtbTpPag = null;
     
-    public tpMovimentacaoController(Usuario objUsuario, JTable jtbUsuarios) {
-        this.objUsuario = objUsuario;
-        this.jtbUsuarios = jtbUsuarios;
+    public tpPagamentoController(tpPagamento objTpPagamento, JTable jtbTpPag) {
+        this.objTpPagamento = objTpPagamento;
+        this.jtbTpPag = jtbTpPag;
     }
     
     
     
-    public Usuario buscar(String coluna1)
+    public tpPagamento buscar(String coluna1)
     {
         try {
             ConnectionFactory.abreConexao();
             ResultSet rs = null;
 
             String SQL = "";
-            SQL = " SELECT cod_usu, nom_usu, login, senha ";
-            SQL += " FROM usuario ";
-            SQL += " WHERE cod_usu = '" + coluna1 + "'";
+            SQL = " SELECT cod_tppag, nom_tppag ";
+            SQL += " FROM tp_pagamento ";
+            SQL += " WHERE cod_tppag = '" + coluna1 + "'";
 
             try{
-                System.out.println("Vai Executar Conexão em buscar Usuarios");
+                System.out.println("Vai Executar Conexão em buscar Tipo de Pagamento");
                 rs = ConnectionFactory.stmt.executeQuery(SQL);
-                System.out.println("Executou Conexão em buscar Usuarios");
+                System.out.println("Executou Conexão em buscar Tipo de pagamento");
 
-                objUsuario = new Usuario();
+                objTpPagamento = new tpPagamento();
                 
                 if(rs.next() == true)
                 {
-                    objUsuario.setCodio(String.valueOf(rs.getInt(1)));
-                    objUsuario.setNome(rs.getString(2));
-                    objUsuario.setLogin(rs.getString(3));
-                    objUsuario.setSenha(rs.getString(4));
-                    
+                    objTpPagamento.setCodio(String.valueOf(rs.getInt(1)));
+                    objTpPagamento.setNome(rs.getString(2));
+                                       
                 }
                 
                
@@ -79,8 +77,8 @@ public class tpMovimentacaoController {
             return null;
         }
         
-        System.out.println ("Executou buscar usuarios com sucesso");
-        return objUsuario;
+        System.out.println ("Executou buscar Tipo de Pagamento com sucesso");
+        return objTpPagamento;
     }
     
     
@@ -100,17 +98,15 @@ public class tpMovimentacaoController {
         Vector dadosTabela = new Vector();
         cabecalhos.add("Codigo");
         cabecalhos.add("Nome");
-        cabecalhos.add("login");
-        cabecalhos.add("Senha");
-        
+               
         ResultSet result = null;
         
         try {
 
             String SQL = "";
-            SQL = " SELECT u.cod_usu, u.nom_usu, u.login, u.senha ";
-            SQL += " FROM usuario u";           
-            SQL += " ORDER BY u.nom_usu ";
+            SQL = " SELECT cod_tppag, nom_tppag ";
+            SQL += " FROM tipo_pagamento ";           
+            SQL += " ORDER BY nom_tppag ";
             
             result = ConnectionFactory.stmt.executeQuery(SQL);
 
@@ -118,8 +114,6 @@ public class tpMovimentacaoController {
                 Vector<Object> linha = new Vector<Object>();
                 linha.add(result.getInt(1));
                 linha.add(result.getString(2));
-                linha.add(result.getString(3));
-                linha.add(result.getString(4));
                 dadosTabela.add(linha);
             }
             
@@ -128,7 +122,7 @@ public class tpMovimentacaoController {
             System.out.println(e);
         }
 
-        jtbUsuarios.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
+        jtbTpPag.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
 
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -139,12 +133,12 @@ public class tpMovimentacaoController {
 
 
         // permite seleção de apenas uma linha da tabela
-        jtbUsuarios.setSelectionMode(0);
+        jtbTpPag.setSelectionMode(0);
 
         // redimensiona as colunas de uma tabela
         TableColumn column = null;
         for (int i = 0; i < 3; i++) {
-            column = jtbUsuarios.getColumnModel().getColumn(i);
+            column = jtbTpPag.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
                     column.setPreferredWidth(80);
@@ -158,7 +152,7 @@ public class tpMovimentacaoController {
             }
         }
         
-        jtbUsuarios.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+        jtbTpPag.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
@@ -184,7 +178,7 @@ public class tpMovimentacaoController {
   
     
         
-        public boolean incluir(Usuario objUsuario){
+        public boolean incluir(tpPagamento objTpPagamento){
         
         ConnectionFactory.abreConexao();
         Connection con = ConnectionFactory.getConnection();
@@ -192,11 +186,9 @@ public class tpMovimentacaoController {
        
         try {
             
-            stmt = con.prepareStatement("INSERT INTO usuario (login, nom_usu, senha)VALUES(?,?,?)");
-            stmt.setString(1, objUsuario.getLogin());
-            stmt.setString(2, objUsuario.getNome());
-            stmt.setString(3, objUsuario.getSenha());
-            
+            stmt = con.prepareStatement("INSERT INTO tipo_pagamento (nom_tppag)VALUES(?)");
+            stmt.setString(1, objTpPagamento.getNome());
+                        
             stmt.executeUpdate();
             
             return true;
@@ -211,7 +203,7 @@ public class tpMovimentacaoController {
     
     }
         
-         public boolean alterar(Usuario objUsuario){
+         public boolean alterar(tpPagamento objTpPagamento){
         
         ConnectionFactory.abreConexao();
         Connection con = ConnectionFactory.getConnection();
@@ -219,11 +211,9 @@ public class tpMovimentacaoController {
        
         try {
             
-            stmt = con.prepareStatement("UPDATE usuario SET login=?, nom_usu=?, senha=? WHERE cod_usu=?");
-            stmt.setString(1, objUsuario.getLogin());
-            stmt.setString(2, objUsuario.getNome());
-            stmt.setString(3, objUsuario.getSenha());
-            stmt.setInt(4, Integer.valueOf(objUsuario.getCodio()));
+            stmt = con.prepareStatement("UPDATE tipo_pagamento SET nom_tppag=? WHERE cod_tppag=?");
+            stmt.setString(1, objTpPagamento.getNome());
+            stmt.setInt(2, Integer.valueOf(objTpPagamento.getCodio()));
             
             stmt.executeUpdate();
             
@@ -239,15 +229,15 @@ public class tpMovimentacaoController {
         
     }
         
-        public boolean excluir(Usuario objUsuário){
+        public boolean excluir(tpPagamento objTpPagamento){
         
         ConnectionFactory.abreConexao();
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try{
-            stmt = con.prepareStatement("DELETE FROM usuario WHERE cod_usu=?");
-            stmt.setInt(1, Integer.valueOf(objUsuario.getCodio()));
+            stmt = con.prepareStatement("DELETE FROM tipo_pagamento WHERE cod_cod_tppag=?");
+            stmt.setInt(1, Integer.valueOf(objTpPagamento.getCodio()));
             
                         
             stmt.executeUpdate();

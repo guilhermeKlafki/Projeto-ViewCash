@@ -225,9 +225,9 @@ public class UsuariosView extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Cadastro de Usuários");
+        jLabel2.setText("Cadastro - Usuários");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -364,17 +364,17 @@ public class UsuariosView extends javax.swing.JFrame {
 
     private void btnExcluir_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_usuarioActionPerformed
         
-        if (txtCodigo.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Excuir !", "Erro", JOptionPane.ERROR_MESSAGE);
+        // (txtCodigo.getText().trim().equals(""))
+           // JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Excuir !", "Erro", JOptionPane.ERROR_MESSAGE);
             
-        }else {
+        
             objUsuario = new Usuario();
             UsuarioController userCon = new UsuarioController(objUsuario, null);        
             objUsuario.setCodio(txtCodigo.getText());
             userCon.excluir(objUsuario);
             atualizaUsuario();
             limparTela();
-        }
+        
        
         
         
@@ -421,13 +421,13 @@ public class UsuariosView extends javax.swing.JFrame {
 
     private void btnAlterar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar_usuarioActionPerformed
         
+       /* Valida de o campo Codigo esta em Branco 
         if (txtCodigo.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Alterar !", "Erro", JOptionPane.ERROR_MESSAGE);
             
-        }if(verificarCampos() == false) {
-           
-           // verificarCampos() ==
-        
+        }*/
+        if(verificarCampos() == false) {
+                         
             objUsuario = new Usuario();
             UsuarioController userCon = new UsuarioController(objUsuario, null);
         

@@ -5,6 +5,8 @@
  */
 package views;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Guilherme Klafki
@@ -48,12 +50,16 @@ public class TipoPagamentoView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblTipoPagamento = new javax.swing.JLabel();
         txtTPpagamento = new javax.swing.JTextField();
-        btnInserir_TPpagameto = new javax.swing.JButton();
-        btnVoltar_TPpagameto = new javax.swing.JButton();
-        btnExcluir_TPpagameto = new javax.swing.JButton();
+        btnInserir_tpPag = new javax.swing.JButton();
+        btnLimpar_tpPag = new javax.swing.JButton();
+        btnExcluir_tpPag = new javax.swing.JButton();
+        btnVoltar_tpPag = new javax.swing.JButton();
+        btnAlterar_tpPag = new javax.swing.JButton();
+        lblCodigo_tpPag = new javax.swing.JLabel();
+        txtCodigo_tpPag = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jtbTpPag = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
 
@@ -137,13 +143,58 @@ public class TipoPagamentoView extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        lblTipoPagamento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTipoPagamento.setText(" Nome do Tipo de Pagamento:");
 
-        btnInserir_TPpagameto.setText("Inserir");
+        btnInserir_tpPag.setText("Inserir");
+        btnInserir_tpPag.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnInserir_tpPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserir_tpPagActionPerformed(evt);
+            }
+        });
 
-        btnVoltar_TPpagameto.setText("Voltar");
+        btnLimpar_tpPag.setText("Limpar");
+        btnLimpar_tpPag.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnLimpar_tpPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpar_tpPagActionPerformed(evt);
+            }
+        });
 
-        btnExcluir_TPpagameto.setText("Excluir");
+        btnExcluir_tpPag.setText("Excluir");
+        btnExcluir_tpPag.setPreferredSize(new java.awt.Dimension(80, 28));
+        btnExcluir_tpPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluir_tpPagActionPerformed(evt);
+            }
+        });
+
+        btnVoltar_tpPag.setText("Voltar");
+        btnVoltar_tpPag.setPreferredSize(new java.awt.Dimension(80, 28));
+        btnVoltar_tpPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltar_tpPagActionPerformed(evt);
+            }
+        });
+
+        btnAlterar_tpPag.setText("Alterar");
+        btnAlterar_tpPag.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnAlterar_tpPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar_tpPagActionPerformed(evt);
+            }
+        });
+
+        lblCodigo_tpPag.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCodigo_tpPag.setText("Codigo:");
+
+        txtCodigo_tpPag.setEditable(false);
+        txtCodigo_tpPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigo_tpPagActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,42 +202,50 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnVoltar_TPpagameto))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTipoPagamento)
-                            .addComponent(txtTPpagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnInserir_TPpagameto)
-                            .addComponent(btnExcluir_TPpagameto))))
-                .addGap(134, 134, 134))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTipoPagamento)
+                    .addComponent(txtTPpagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCodigo_tpPag))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVoltar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlterar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInserir_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(97, 97, 97))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(btnInserir_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAlterar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluir_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLimpar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(lblCodigo_tpPag)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodigo_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblTipoPagamento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTPpagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(btnInserir_TPpagameto)))
-                .addGap(18, 18, 18)
-                .addComponent(btnExcluir_TPpagameto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(btnVoltar_TPpagameto)
-                .addContainerGap())
+                        .addComponent(txtTPpagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnVoltar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jtbTpPag.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -197,7 +256,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(jtbTpPag);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -241,7 +300,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(67, 67, 67)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
         );
@@ -273,6 +332,81 @@ public class TipoPagamentoView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jtbAlunosMouseClicked
 
+    private void btnInserir_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_tpPagActionPerformed
+        // TODO add your handling code here:
+        if (verificarCampos() == false) {
+
+            objUsuario = new Usuario();
+            UsuarioController userCon = new UsuarioController(objUsuario, null);
+
+            objUsuario.setLogin(txtLogin.getText());
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setSenha(txtSenha.getText());
+            userCon.incluir(objUsuario);
+            atualizaUsuario();
+
+            JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnInserir_tpPagActionPerformed
+
+    private void btnLimpar_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar_tpPagActionPerformed
+        limparTela();
+    }//GEN-LAST:event_btnLimpar_tpPagActionPerformed
+
+    private void btnExcluir_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_tpPagActionPerformed
+
+        // (txtCodigo.getText().trim().equals(""))
+        // JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Excuir !", "Erro", JOptionPane.ERROR_MESSAGE);
+
+        objUsuario = new Usuario();
+        UsuarioController userCon = new UsuarioController(objUsuario, null);
+        objUsuario.setCodio(txtCodigo_tpMovi.getText());
+        userCon.excluir(objUsuario);
+        atualizaUsuario();
+        limparTela();
+    }//GEN-LAST:event_btnExcluir_tpPagActionPerformed
+
+    private void btnVoltar_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar_tpPagActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltar_tpPagActionPerformed
+
+    private void btnAlterar_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar_tpPagActionPerformed
+
+        /* Valida de o campo Codigo esta em Branco
+        if (txtCodigo.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Alterar !", "Erro", JOptionPane.ERROR_MESSAGE);
+
+        }*/
+        if(verificarCampos() == false) {
+
+            objUsuario = new Usuario();
+            UsuarioController userCon = new UsuarioController(objUsuario, null);
+
+            objUsuario.setLogin(txtLogin.getText());
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setSenha(txtSenha.getText());
+            objUsuario.setCodio(txtCodigo_tpMovi.getText());
+            userCon.alterar(objUsuario);
+            atualizaUsuario();
+            limparTela();
+        }
+    }//GEN-LAST:event_btnAlterar_tpPagActionPerformed
+
+    private void txtCodigo_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigo_tpPagActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigo_tpPagActionPerformed
+
+    public boolean verificarCampos() {
+        if (txtNome.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Nome está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txtNome.requestFocus();
+            return true;           
+        }
+        return false;
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -310,11 +444,13 @@ public class TipoPagamentoView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnAlterar_tpPag;
     private javax.swing.JButton btnDeletar;
-    private javax.swing.JButton btnExcluir_TPpagameto;
+    private javax.swing.JButton btnExcluir_tpPag;
     private javax.swing.JButton btnIncluir;
-    private javax.swing.JButton btnInserir_TPpagameto;
-    private javax.swing.JButton btnVoltar_TPpagameto;
+    private javax.swing.JButton btnInserir_tpPag;
+    private javax.swing.JButton btnLimpar_tpPag;
+    private javax.swing.JButton btnVoltar_tpPag;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -327,12 +463,14 @@ public class TipoPagamentoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JComboBox<String> jcbCursos;
     private javax.swing.JTable jtbAlunos;
+    private javax.swing.JTable jtbTpPag;
+    private javax.swing.JLabel lblCodigo_tpPag;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblMatricula;
     private javax.swing.JLabel lblTipoPagamento;
+    private javax.swing.JTextField txtCodigo_tpPag;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JFormattedTextField txtMatricula;
