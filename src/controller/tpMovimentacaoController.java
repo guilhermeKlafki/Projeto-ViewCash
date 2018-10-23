@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.Aluno;
 import model.Usuario;
+import model.tpMovimentacao;
 
 /**
  *
@@ -27,41 +28,41 @@ import model.Usuario;
  */
 public class tpMovimentacaoController {
     
-    Usuario objUsuario;
+    tpMovimentacao objTpMovimentacao;
     
-    JTable jtbUsuarios = null;
+    JTable jtbTpMovi = null;
     
-    public tpMovimentacaoController(Usuario objUsuario, JTable jtbUsuarios) {
-        this.objUsuario = objUsuario;
-        this.jtbUsuarios = jtbUsuarios;
+    public tpMovimentacaoController(tpMovimentacao objTpMovimentacao, JTable jtbTpMovi) {
+        this.objTpMovimentacao = objTpMovimentacao;
+        this.jtbTpMovi = jtbTpMovi;
     }
     
     
     
-    public Usuario buscar(String coluna1)
+    public tpMovimentacao buscar(String coluna3)
     {
         try {
             ConnectionFactory.abreConexao();
             ResultSet rs = null;
 
             String SQL = "";
-            SQL = " SELECT cod_usu, nom_usu, login, senha ";
-            SQL += " FROM usuario ";
-            SQL += " WHERE cod_usu = '" + coluna1 + "'";
+            SQL = " SELECT cod_tpmov, nom_tpmov, des_tpmov";
+            SQL += " FROM tipo_movimentacao ";
+            SQL += " WHERE cod_tpmov = '" + coluna3 + "'";
 
             try{
-                System.out.println("Vai Executar Conexão em buscar Usuarios");
+                System.out.println("Vai Executar Conexão em buscar Tipo Movimentação");
                 rs = ConnectionFactory.stmt.executeQuery(SQL);
-                System.out.println("Executou Conexão em buscar Usuarios");
+                System.out.println("Executou Conexão em buscar Tipo Movimentação");
 
-                objUsuario = new Usuario();
+                objTpMovimentacao = new tpMovimentacao();
                 
                 if(rs.next() == true)
                 {
-                    objUsuario.setCodio(String.valueOf(rs.getInt(1)));
-                    objUsuario.setNome(rs.getString(2));
-                    objUsuario.setLogin(rs.getString(3));
-                    objUsuario.setSenha(rs.getString(4));
+                    objTpMovimentacao.setCodigo(String.valueOf(rs.getInt(1)));
+                    objTpMovimentacao.setNome(rs.getString(2));
+                    objTpMovimentacao.setDescricao(rs.getString(3));
+                    
                     
                 }
                 
@@ -80,7 +81,7 @@ public class tpMovimentacaoController {
         }
         
         System.out.println ("Executou buscar usuarios com sucesso");
-        return objUsuario;
+        return objTpMovimentacao;
     }
     
     
@@ -90,7 +91,7 @@ public class tpMovimentacaoController {
     
     
     
-    public void PreencheUsuarios() {
+    public void PreencheTabelaTpMovi() {
 
         try{
             
@@ -100,17 +101,17 @@ public class tpMovimentacaoController {
         Vector dadosTabela = new Vector();
         cabecalhos.add("Codigo");
         cabecalhos.add("Nome");
-        cabecalhos.add("login");
-        cabecalhos.add("Senha");
+        cabecalhos.add("Descrição");
+        
         
         ResultSet result = null;
         
         try {
 
             String SQL = "";
-            SQL = " SELECT u.cod_usu, u.nom_usu, u.login, u.senha ";
-            SQL += " FROM usuario u";           
-            SQL += " ORDER BY u.nom_usu ";
+            SQL = " SELECT cod_tpmov, nom_tpmov, des_tpmov ";
+            SQL += " FROM tipo_movimentacao ";           
+            SQL += " ORDER BY nom_tpmov ";
             
             result = ConnectionFactory.stmt.executeQuery(SQL);
 
@@ -119,7 +120,6 @@ public class tpMovimentacaoController {
                 linha.add(result.getInt(1));
                 linha.add(result.getString(2));
                 linha.add(result.getString(3));
-                linha.add(result.getString(4));
                 dadosTabela.add(linha);
             }
             
@@ -128,7 +128,7 @@ public class tpMovimentacaoController {
             System.out.println(e);
         }
 
-        jtbUsuarios.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
+        jtbTpMovi.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
 
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -139,12 +139,12 @@ public class tpMovimentacaoController {
 
 
         // permite seleção de apenas uma linha da tabela
-        jtbUsuarios.setSelectionMode(0);
+        jtbTpMovi.setSelectionMode(0);
 
         // redimensiona as colunas de uma tabela
         TableColumn column = null;
         for (int i = 0; i < 3; i++) {
-            column = jtbUsuarios.getColumnModel().getColumn(i);
+            column = jtbTpMovi.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
                     column.setPreferredWidth(80);
@@ -158,7 +158,7 @@ public class tpMovimentacaoController {
             }
         }
         
-        jtbUsuarios.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+        jtbTpMovi.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
@@ -184,7 +184,7 @@ public class tpMovimentacaoController {
   
     
         
-        public boolean incluir(Usuario objUsuario){
+        public boolean incluir(tpMovimentacao objTpMovimentacao){
         
         ConnectionFactory.abreConexao();
         Connection con = ConnectionFactory.getConnection();
@@ -192,10 +192,10 @@ public class tpMovimentacaoController {
        
         try {
             
-            stmt = con.prepareStatement("INSERT INTO usuario (login, nom_usu, senha)VALUES(?,?,?)");
-            stmt.setString(1, objUsuario.getLogin());
-            stmt.setString(2, objUsuario.getNome());
-            stmt.setString(3, objUsuario.getSenha());
+            stmt = con.prepareStatement("INSERT INTO tipo_movimentacao (nom_tpmov, des_tpmov)VALUES(?,?)");
+            stmt.setString(1, objTpMovimentacao.getNome());
+            stmt.setString(2, objTpMovimentacao.getDescricao());
+            
             
             stmt.executeUpdate();
             
@@ -211,7 +211,7 @@ public class tpMovimentacaoController {
     
     }
         
-         public boolean alterar(Usuario objUsuario){
+         public boolean alterar(tpMovimentacao objTpMovimentacao){
         
         ConnectionFactory.abreConexao();
         Connection con = ConnectionFactory.getConnection();
@@ -219,11 +219,10 @@ public class tpMovimentacaoController {
        
         try {
             
-            stmt = con.prepareStatement("UPDATE usuario SET login=?, nom_usu=?, senha=? WHERE cod_usu=?");
-            stmt.setString(1, objUsuario.getLogin());
-            stmt.setString(2, objUsuario.getNome());
-            stmt.setString(3, objUsuario.getSenha());
-            stmt.setInt(4, Integer.valueOf(objUsuario.getCodio()));
+            stmt = con.prepareStatement("UPDATE tipo_movimentacao SET nom_tpmov=?, des_tpmov=? WHERE cod_tpmov=?");
+            stmt.setString(1, objTpMovimentacao.getNome());
+            stmt.setString(2, objTpMovimentacao.getDescricao());
+            stmt.setInt(3, Integer.valueOf(objTpMovimentacao.getCodigo()));
             
             stmt.executeUpdate();
             
@@ -239,15 +238,15 @@ public class tpMovimentacaoController {
         
     }
         
-        public boolean excluir(Usuario objUsuário){
+        public boolean excluir(tpMovimentacao objTpMovimentacao){
         
         ConnectionFactory.abreConexao();
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try{
-            stmt = con.prepareStatement("DELETE FROM usuario WHERE cod_usu=?");
-            stmt.setInt(1, Integer.valueOf(objUsuario.getCodio()));
+            stmt = con.prepareStatement("DELETE FROM tipo_movimentacao WHERE cod_tpmov=?");
+            stmt.setInt(1, Integer.valueOf(objTpMovimentacao.getCodigo()));
             
                         
             stmt.executeUpdate();

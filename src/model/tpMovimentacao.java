@@ -13,24 +13,7 @@ public class tpMovimentacao {
     
     private String nome;
     private String descricao;
-    private String codio;
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getCodio() {
-        return codio;
-    }
-
-    public void setCodio(String codio) {
-        this.codio = codio;
-    }
-       
+    private String codigo;
 
     public String getNome() {
         return nome;
@@ -40,7 +23,20 @@ public class tpMovimentacao {
         this.nome = nome;
     }
 
-      
-    
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }    
     
 }

@@ -44,7 +44,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
         btnAlterar_tpMovi = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableTpMovimentacao = new javax.swing.JTable();
+        jtbTpMovi = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
 
@@ -179,7 +179,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTableTpMovimentacao.setModel(new javax.swing.table.DefaultTableModel(
+        jtbTpMovi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -190,7 +190,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableTpMovimentacao);
+        jScrollPane1.setViewportView(jtbTpMovi);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -366,9 +366,9 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTableTpMovimentacao;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTable jtbTpMovi;
     private javax.swing.JLabel lblCodigo_tpMovi;
     private javax.swing.JLabel lblDescricao;
     private javax.swing.JTextField txtCodigo_tpMovi;
