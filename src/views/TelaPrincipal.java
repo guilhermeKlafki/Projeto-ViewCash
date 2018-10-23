@@ -122,7 +122,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Relaórios");
+        jMenu2.setText("Relatórios");
         jMenuBar1.add(jMenu2);
 
         jMenuSair.setText("Sair");
@@ -212,12 +212,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlunosActionPerformed
-        // TODO add your handling code here:
-        AlunosView alunos = new AlunosView();
-        alunos.setVisible(true);
-    }//GEN-LAST:event_menuAlunosActionPerformed
-
     private void menuTpPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTpPagamentoActionPerformed
         // TODO add your handling code here:
         TipoPagamentoView TpPagamento = new TipoPagamentoView();
@@ -244,6 +238,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        System.exit(0);        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void menuAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlunosActionPerformed
+        // TODO add your handling code here:
+        AlunosView alunos = new AlunosView();
+        alunos.setVisible(true);
+    }//GEN-LAST:event_menuAlunosActionPerformed
 
     /**
      * @param args the command line arguments
