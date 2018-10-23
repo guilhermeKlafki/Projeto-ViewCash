@@ -271,15 +271,16 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
 
     public boolean verificarCamposTpMovi() {
         if (txtNome_tpMovi.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Campo Nome está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Campo Nome está em branco!", "Erro", 'e');
+            //JOptionPane.showMessageDialog(null, "Campo Nome está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
             txtNome_tpMovi.requestFocus();
-            return true;           
-        }if (txtDescricao_tpMovi.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Campo Descrição está em branco!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-            txtDescricao_tpMovi.requestFocus();
             return false;           
+        }if (txtDescricao_tpMovi.getText().trim().equals("")) {
+            Boolean wRetorno = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Campo descrição está em branco. Incluir mesmo assim?" , "Atenção", 'p');
+            txtDescricao_tpMovi.requestFocus();
+            return wRetorno;
         }
-        return false;
+        return true;
     }
     
     public void atualizaTpMovimentacao(){
@@ -326,7 +327,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
     
     private void btnInserir_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_tpMoviActionPerformed
         // TODO add your handling code here:
-        if (verificarCamposTpMovi()== false) {
+        if (verificarCamposTpMovi()== true) {
 
             objTpMovimentacao = new tpMovimentacao();
             tpMovimentacaoController tpmoviCon = new tpMovimentacaoController(null, jtbTpMovi);
