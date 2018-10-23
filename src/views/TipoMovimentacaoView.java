@@ -5,17 +5,27 @@
  */
 package views;
 
+import controller.tpMovimentacaoController;
+import ferramentas.CaixaDeDialogo;
+import javax.swing.JOptionPane;
+import model.tpMovimentacao;
+
 /**
  *
  * @author Guilherme Klafki
  */
 public class TipoMovimentacaoView extends javax.swing.JFrame {
 
+    tpMovimentacao objTpMovimentacao;
+    
     /**
      * Creates new form TipoMovimentacaoView
      */
     public TipoMovimentacaoView() {
         initComponents();
+        tpMovimentacaoController tpmoviCon = new tpMovimentacaoController(null, jtbTpMovi);
+        tpmoviCon.PreencheTabelaTpMovi();
+        limparTelaTpMovi();
     }
 
     /**
@@ -31,7 +41,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtTpMovi = new javax.swing.JTextField();
+        txtNome_tpMovi = new javax.swing.JTextField();
         lblDescricao = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDescricao_tpMovi = new javax.swing.JTextArea();
@@ -59,9 +69,9 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Nome do Tipo de Movimentação:");
 
-        txtTpMovi.addActionListener(new java.awt.event.ActionListener() {
+        txtNome_tpMovi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTpMoviActionPerformed(evt);
+                txtNome_tpMoviActionPerformed(evt);
             }
         });
 
@@ -135,7 +145,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
                             .addComponent(lblDescricao)
                             .addGap(215, 215, 215)))
                     .addComponent(jLabel2)
-                    .addComponent(txtTpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNome_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodigo_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodigo_tpMovi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
@@ -157,7 +167,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNome_tpMovi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDescricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,6 +200,11 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtbTpMovi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbTpMoviMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtbTpMovi);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -243,48 +258,98 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTpMoviActionPerformed
+    private void txtNome_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNome_tpMoviActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTpMoviActionPerformed
+    }//GEN-LAST:event_txtNome_tpMoviActionPerformed
 
     private void txtCodigo_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigo_tpMoviActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigo_tpMoviActionPerformed
 
+    public boolean verificarCamposTpMovi() {
+        if (txtNome_tpMovi.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Nome está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txtNome_tpMovi.requestFocus();
+            return true;           
+        }if (txtDescricao_tpMovi.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Descrição está em branco!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            txtDescricao_tpMovi.requestFocus();
+            return false;           
+        }
+        return false;
+    }
+    
+    public void atualizaTpMovimentacao(){
+        tpMovimentacaoController tpmoviCon = new tpMovimentacaoController(null, jtbTpMovi);
+        tpmoviCon.PreencheTabelaTpMovi();
+    }
+    
+    private void limparTelaTpMovi() {
+        try {
+            //LIMPAR OS CAMPOS DA TELA
+            //LIBERAR O CAMPO MATRICULA
+
+            txtCodigo_tpMovi.setText("");
+            txtNome_tpMovi.setText("");
+            txtDescricao_tpMovi.setText("");
+            
+            // Não deixa o botão Alterar aparecer na tela
+            btnAlterar_tpMovi.setVisible(false);
+            btnExcluir_tpMovi.setVisible(false);
+            btnInserir_tpMovi.setVisible(true);
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+        }
+    }
+    
+    private void preencheCamposTpMovi() {
+        try {
+            // atulização 18:44
+            
+            txtNome_tpMovi.setText(objTpMovimentacao.getNome());
+            txtCodigo_tpMovi.setText(objTpMovimentacao.getCodigo());
+            txtDescricao_tpMovi.setText(objTpMovimentacao.getDescricao());
+            // Deixa o botão Alterar aparecer na tela
+            btnAlterar_tpMovi.setVisible(true);
+            btnExcluir_tpMovi.setVisible(true);
+            btnInserir_tpMovi.setVisible(false);
+
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+        }
+    }
+    
+    
+    
     private void btnInserir_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_tpMoviActionPerformed
         // TODO add your handling code here:
-       /* if (verificarCampos() == false) {
+        if (verificarCamposTpMovi()== false) {
 
-            objUsuario = new Usuario();
-            UsuarioController userCon = new UsuarioController(objUsuario, null);
+            objTpMovimentacao = new tpMovimentacao();
+            tpMovimentacaoController tpmoviCon = new tpMovimentacaoController(null, jtbTpMovi);
 
-            objUsuario.setLogin(txtLogin.getText());
-            objUsuario.setNome(txtNome.getText());
-            objUsuario.setSenha(txtSenha.getText());
-            userCon.incluir(objUsuario);
-            atualizaUsuario();
+            objTpMovimentacao.setNome(txtNome_tpMovi.getText());
+            objTpMovimentacao.setDescricao(txtDescricao_tpMovi.getText());
+            
+            tpmoviCon.incluir(objTpMovimentacao);
+            atualizaTpMovimentacao();
 
-            JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Tipo de Movimentação inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
         }
-           */ 
     }//GEN-LAST:event_btnInserir_tpMoviActionPerformed
 
     private void btnLimpar_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar_tpMoviActionPerformed
-        //limparTela();
+        limparTelaTpMovi();
     }//GEN-LAST:event_btnLimpar_tpMoviActionPerformed
 
     private void btnExcluir_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_tpMoviActionPerformed
 
-        // (txtCodigo.getText().trim().equals(""))
-        // JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Excuir !", "Erro", JOptionPane.ERROR_MESSAGE);
-/*
-        objUsuario = new Usuario();
-        UsuarioController userCon = new UsuarioController(objUsuario, null);
-        objUsuario.setCodio(txtCodigo_tpMovi.getText());
-        userCon.excluir(objUsuario);
-        atualizaUsuario();
-        limparTela();
-        */
+        objTpMovimentacao = new tpMovimentacao();
+        tpMovimentacaoController tpmoviCon = new tpMovimentacaoController(objTpMovimentacao, null);
+        objTpMovimentacao.setCodigo(txtCodigo_tpMovi.getText());
+        tpmoviCon.excluir(objTpMovimentacao);
+        atualizaTpMovimentacao();
+        limparTelaTpMovi();
 
     }//GEN-LAST:event_btnExcluir_tpMoviActionPerformed
 
@@ -295,28 +360,36 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
 
     private void btnAlterar_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar_tpMoviActionPerformed
 
-        /* Valida de o campo Codigo esta em Branco
-        if (txtCodigo.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Alterar !", "Erro", JOptionPane.ERROR_MESSAGE);
+       if(verificarCamposTpMovi()== false) {
 
-        }*/
-        
-       /* if(verificarCampos() == false) {
+            objTpMovimentacao = new tpMovimentacao();
+             tpMovimentacaoController tpmoviCon = new tpMovimentacaoController(objTpMovimentacao, null);
 
-            objUsuario = new Usuario();
-            UsuarioController userCon = new UsuarioController(objUsuario, null);
-
-            objUsuario.setLogin(txtLogin.getText());
-            objUsuario.setNome(txtNome.getText());
-            objUsuario.setSenha(txtSenha.getText());
-            objUsuario.setCodio(txtCodigo_tpMovi.getText());
-            userCon.alterar(objUsuario);
-            atualizaUsuario();
-            limparTela();
-        
+            
+            objTpMovimentacao.setNome(txtNome_tpMovi.getText());            
+            objTpMovimentacao.setCodigo(txtCodigo_tpMovi.getText());
+            objTpMovimentacao.setDescricao(txtDescricao_tpMovi.getText());
+            tpmoviCon.alterar(objTpMovimentacao);
+            atualizaTpMovimentacao();
+            limparTelaTpMovi();
         }
-        */
     }//GEN-LAST:event_btnAlterar_tpMoviActionPerformed
+
+    private void jtbTpMoviMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbTpMoviMouseClicked
+        // TODO add your handling code here:
+        //pega a linha selecionada
+   int linhaSelecionada = jtbTpMovi.getSelectedRow();
+   // Primeira coluna da linha
+   String coluna3 = jtbTpMovi.getModel().getValueAt(linhaSelecionada, 0).toString();
+ 
+   //basta agora chamar o método buscar, passando o COLUNA1 como parâmetro de consulta
+  tpMovimentacaoController tpmoviCon = new tpMovimentacaoController(null, null);  
+   objTpMovimentacao = tpmoviCon.buscar(coluna3);
+   
+   preencheCamposTpMovi();
+
+        
+    }//GEN-LAST:event_jtbTpMoviMouseClicked
 
     /**
      * @param args the command line arguments
@@ -373,6 +446,6 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
     private javax.swing.JLabel lblDescricao;
     private javax.swing.JTextField txtCodigo_tpMovi;
     private javax.swing.JTextArea txtDescricao_tpMovi;
-    private javax.swing.JTextField txtTpMovi;
+    private javax.swing.JTextField txtNome_tpMovi;
     // End of variables declaration//GEN-END:variables
 }

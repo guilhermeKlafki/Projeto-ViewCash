@@ -24,7 +24,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
     public TipoPagamentoView() {
         initComponents();
         tpPagamentoController tppagCon = new tpPagamentoController(null, jtbTpPag);
-        tppagCon.PreencheUsuariosTpPag();
+        tppagCon.PreencheTabelaTpPag();
         limparTelaTpPag();
     }
 
@@ -384,7 +384,8 @@ public class TipoPagamentoView extends javax.swing.JFrame {
 
     private void btnAlterar_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar_tpPagActionPerformed
 
-       if(verificarCamposTpPag() == false) {
+       
+        if(verificarCamposTpPag() == false) {
 
             objTpPagamento = new tpPagamento();
              tpPagamentoController tppagCon = new tpPagamentoController(objTpPagamento, null);
@@ -429,7 +430,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
     
     public void atualizaTpPagamento(){
         tpPagamentoController tppagCon = new tpPagamentoController(null, jtbTpPag);
-        tppagCon.PreencheUsuariosTpPag();
+        tppagCon.PreencheTabelaTpPag();
     }
     
     private void limparTelaTpPag() {

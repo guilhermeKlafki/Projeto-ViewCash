@@ -88,7 +88,7 @@ public class tpPagamentoController {
     
     
     
-    public void PreencheUsuariosTpPag() {
+    public void PreencheTabelaTpPag() {
 
         try{
             
