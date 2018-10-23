@@ -372,7 +372,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
 
         objTpPagamento = new tpPagamento();
         tpPagamentoController tppagCon = new tpPagamentoController(objTpPagamento, null);
-        objTpPagamento.setCodio(txtCodigo_tpPag.getText());
+        objTpPagamento.setCodigo(txtCodigo_tpPag.getText());
         tppagCon.excluir(objTpPagamento);
         atualizaTpPagamento();
         limparTelaTpPag();
@@ -384,19 +384,14 @@ public class TipoPagamentoView extends javax.swing.JFrame {
 
     private void btnAlterar_tpPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar_tpPagActionPerformed
 
-        /* Valida de o campo Codigo esta em Branco
-        if (txtCodigo.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Selecione um Cadastro na Tabela Para Alterar !", "Erro", JOptionPane.ERROR_MESSAGE);
-
-        }*/
-        if(verificarCamposTpPag() == false) {
+       if(verificarCamposTpPag() == false) {
 
             objTpPagamento = new tpPagamento();
              tpPagamentoController tppagCon = new tpPagamentoController(objTpPagamento, null);
 
             
-            objTpPagamento.setNome(txtNome.getText());            
-            objTpPagamento.setCodio(txtCodigo_tpPag.getText());
+            objTpPagamento.setNome(txtNome_TpPagamento.getText());            
+            objTpPagamento.setCodigo(txtCodigo_tpPag.getText());
             tppagCon.alterar(objTpPagamento);
             atualizaTpPagamento();
             limparTelaTpPag();
@@ -459,7 +454,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             // atulização 18:44
             
             txtNome_TpPagamento.setText(objTpPagamento.getNome());
-            txtCodigo_tpPag.setText(objTpPagamento.getCodio());
+            txtCodigo_tpPag.setText(objTpPagamento.getCodigo());
             // Deixa o botão Alterar aparecer na tela
             btnAlterar_tpPag.setVisible(true);
             btnExcluir_tpPag.setVisible(true);

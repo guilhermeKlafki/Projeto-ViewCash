@@ -58,7 +58,7 @@ public class tpPagamentoController {
                 
                 if(rs.next() == true)
                 {
-                    objTpPagamento.setCodio(String.valueOf(rs.getInt(1)));
+                    objTpPagamento.setCodigo(String.valueOf(rs.getInt(1)));
                     objTpPagamento.setNome(rs.getString(2));
                                        
                 }
@@ -213,7 +213,7 @@ public class tpPagamentoController {
             
             stmt = con.prepareStatement("UPDATE tipo_pagamento SET nom_tppag=? WHERE cod_tppag=?");
             stmt.setString(1, objTpPagamento.getNome());
-            stmt.setInt(2, Integer.valueOf(objTpPagamento.getCodio()));
+            stmt.setInt(2, Integer.valueOf(objTpPagamento.getCodigo()));
             
             stmt.executeUpdate();
             
@@ -236,8 +236,8 @@ public class tpPagamentoController {
         PreparedStatement stmt = null;
         
         try{
-            stmt = con.prepareStatement("DELETE FROM tipo_pagamento WHERE cod_cod_tppag=?");
-            stmt.setInt(1, Integer.valueOf(objTpPagamento.getCodio()));
+            stmt = con.prepareStatement("DELETE FROM tipo_pagamento WHERE cod_tppag=?");
+            stmt.setInt(1, Integer.valueOf(objTpPagamento.getCodigo()));
             
                         
             stmt.executeUpdate();

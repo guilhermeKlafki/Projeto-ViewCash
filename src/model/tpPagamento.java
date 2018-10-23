@@ -14,11 +14,11 @@ public class tpPagamento {
     private String nome;
     private String codigo;
 
-    public String getCodio() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodio(String codio) {
+    public void setCodigo(String codio) {
         this.codigo = codio;
     }
 
