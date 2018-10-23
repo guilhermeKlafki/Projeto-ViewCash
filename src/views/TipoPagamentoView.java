@@ -154,6 +154,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
         lblTipoPagamento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTipoPagamento.setText(" Nome do Tipo de Pagamento:");
 
+        btnInserir_tpPag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/inserir.png"))); // NOI18N
         btnInserir_tpPag.setText("Inserir");
         btnInserir_tpPag.setPreferredSize(new java.awt.Dimension(80, 30));
         btnInserir_tpPag.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +163,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             }
         });
 
+        btnLimpar_tpPag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/limpar.png"))); // NOI18N
         btnLimpar_tpPag.setText("Limpar");
         btnLimpar_tpPag.setPreferredSize(new java.awt.Dimension(80, 30));
         btnLimpar_tpPag.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +172,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             }
         });
 
+        btnExcluir_tpPag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/excluir.png"))); // NOI18N
         btnExcluir_tpPag.setText("Excluir");
         btnExcluir_tpPag.setPreferredSize(new java.awt.Dimension(80, 28));
         btnExcluir_tpPag.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +181,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             }
         });
 
+        btnVoltar_tpPag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/voltar.png"))); // NOI18N
         btnVoltar_tpPag.setText("Voltar");
         btnVoltar_tpPag.setPreferredSize(new java.awt.Dimension(80, 28));
         btnVoltar_tpPag.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +190,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             }
         });
 
+        btnAlterar_tpPag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/alterar.png"))); // NOI18N
         btnAlterar_tpPag.setText("Alterar");
         btnAlterar_tpPag.setPreferredSize(new java.awt.Dimension(80, 30));
         btnAlterar_tpPag.addActionListener(new java.awt.event.ActionListener() {
@@ -212,17 +217,17 @@ public class TipoPagamentoView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTipoPagamento)
-                    .addComponent(txtNome_TpPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNome_TpPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodigo_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodigo_tpPag))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVoltar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluir_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAlterar_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInserir_tpPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(97, 97, 97))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnInserir_tpPag, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(btnAlterar_tpPag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnExcluir_tpPag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLimpar_tpPag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVoltar_tpPag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(87, 87, 87))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +282,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(

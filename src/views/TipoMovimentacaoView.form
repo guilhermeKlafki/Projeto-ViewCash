@@ -55,7 +55,7 @@
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -78,27 +78,24 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblDescricao" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="215" pref="215" max="-2" attributes="0"/>
-                          </Group>
+                      <Component id="lblDescricao" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNome_tpMovi" alignment="0" pref="260" max="32767" attributes="0"/>
+                          <Component id="txtCodigo_tpMovi" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="lblCodigo_tpMovi" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNome_tpMovi" min="-2" pref="265" max="-2" attributes="0"/>
-                      <Component id="txtCodigo_tpMovi" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="lblCodigo_tpMovi" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="168" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnInserir_tpMovi" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnVoltar_tpMovi" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnLimpar_tpMovi" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnExcluir_tpMovi" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnAlterar_tpMovi" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnInserir_tpMovi" pref="90" max="32767" attributes="0"/>
+                      <Component id="btnAlterar_tpMovi" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnExcluir_tpMovi" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnLimpar_tpMovi" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnVoltar_tpMovi" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -190,6 +187,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnInserir_tpMovi">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icones/inserir.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Inserir"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 30]"/>
@@ -201,6 +201,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnLimpar_tpMovi">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icones/limpar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Limpar"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 30]"/>
@@ -212,6 +215,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnExcluir_tpMovi">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icones/excluir.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Excluir"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 28]"/>
@@ -223,6 +229,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnVoltar_tpMovi">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icones/voltar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Voltar"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 28]"/>
@@ -234,6 +243,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnAlterar_tpMovi">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icones/alterar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Alterar"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 30]"/>
@@ -259,7 +271,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="618" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -267,8 +279,8 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="228" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="196" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
