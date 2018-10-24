@@ -61,7 +61,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuTpPagamento = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        relatorio1 = new javax.swing.JMenuItem();
+        ReUsuarioCompleto = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -141,14 +141,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/relatório.png"))); // NOI18N
         jMenu2.setText("Relatórios");
 
-        relatorio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/relatório.png"))); // NOI18N
-        relatorio1.setText("Relatorio1");
-        relatorio1.addActionListener(new java.awt.event.ActionListener() {
+        ReUsuarioCompleto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/relatório.png"))); // NOI18N
+        ReUsuarioCompleto.setText("Relatório Completo Usuarios");
+        ReUsuarioCompleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                relatorio1ActionPerformed(evt);
+                ReUsuarioCompletoActionPerformed(evt);
             }
         });
-        jMenu2.add(relatorio1);
+        jMenu2.add(ReUsuarioCompleto);
 
         jMenuBar1.add(jMenu2);
 
@@ -274,10 +274,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         alunos.setVisible(true);
     }//GEN-LAST:event_menuAlunosActionPerformed
 
-    private void relatorio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorio1ActionPerformed
+    private void ReUsuarioCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReUsuarioCompletoActionPerformed
         // TODO add your handling code here:
         
-         // metodo para adicnonar um relaório
+         // metodo para gerar um relaório
+         
+         // Para criar o arquivo .jasper na pasa tem que cicar em preview no iReport
        
       
         try {
@@ -285,7 +287,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             UsuarioController objUsuaioCon = new UsuarioController(null, null);
             ResultSet resultSet = objUsuaioCon.buscarRelatorio();//Buscar os dados do relatório
             JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
-            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/RelatorioCursos.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
+            JasperPrint jpPrint = JasperFillManager.fillReport("Relatorios/usuariosCompleto.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
             JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
             jpViewer.setVisible(true);//abre o relatório para visualização
             jpViewer.toFront();//define o form a frente da aplicação
@@ -299,7 +301,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         
         
-    }//GEN-LAST:event_relatorio1ActionPerformed
+    }//GEN-LAST:event_ReUsuarioCompletoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,6 +339,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ReUsuarioCompleto;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -353,7 +356,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAlunos;
     private javax.swing.JMenuItem menuTpPagamento;
     private javax.swing.JMenuItem menuUsuarios;
-    private javax.swing.JMenuItem relatorio1;
     private javax.swing.JLabel txtDespesaMes_principal;
     private javax.swing.JLabel txtDespesaTotal_principal;
     private javax.swing.JLabel txtNomeUsuario_principal;

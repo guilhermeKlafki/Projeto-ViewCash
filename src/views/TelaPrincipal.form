@@ -63,15 +63,15 @@
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="relatorio1">
+            <MenuItem class="javax.swing.JMenuItem" name="ReUsuarioCompleto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icones/relat&#xf3;rio.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Relatorio1"/>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio Completo Usuarios"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relatorio1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReUsuarioCompletoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

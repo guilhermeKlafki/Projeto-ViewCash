@@ -272,10 +272,11 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
     public boolean verificarCamposTpMovi() {
         if (txtNome_tpMovi.getText().trim().equals("")) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Campo Nome está em branco!", "Erro", 'e');
-            //JOptionPane.showMessageDialog(null, "Campo Nome está em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
+            
             txtNome_tpMovi.requestFocus();
             return false;           
         }if (txtDescricao_tpMovi.getText().trim().equals("")) {
+            // Efetua uma pergunta para o usuário se deseja deixar o campo Descrição em branco.
             Boolean wRetorno = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Campo descrição está em branco. Incluir mesmo assim?" , "Atenção", 'p');
             txtDescricao_tpMovi.requestFocus();
             return wRetorno;
