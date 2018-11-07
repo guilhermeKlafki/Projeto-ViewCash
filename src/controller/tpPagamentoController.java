@@ -81,7 +81,34 @@ public class tpPagamentoController {
         return objTpPagamento;
     }
     
-    
+     public ResultSet buscarRelatorio()
+    {
+        ResultSet rs = null;
+        try {
+            ConnectionFactory.abreConexao();
+            
+            String SQL = "";
+            SQL = " SELECT * from tipo_pagamento ";
+
+            try{
+                System.out.println("Vai Executar Conexão em buscar visitante");
+                rs = ConnectionFactory.stmt.executeQuery(SQL);
+            }
+
+            catch (SQLException ex )
+            {
+                System.out.println("ERRO de SQL: " + ex.getMessage().toString());
+                return rs;
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage().toString());
+            return rs;
+        }
+        
+        System.out.println ("Executou buscar visitante com sucesso");
+        return rs;
+    }
     
     
     

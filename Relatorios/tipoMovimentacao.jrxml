@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tipoMovimentacao" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9dacf2c0-c03e-4146-94cd-33d7f8d1d3b7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="11"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from tipo_movimentacao]]>
+	</queryString>
+	<field name="cod_tpmov" class="java.lang.Integer"/>
+	<field name="nom_tpmov" class="java.lang.String"/>
+	<field name="des_tpmov" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="163" y="22" width="494" height="35" uuid="5e7fa028-c041-4afc-a711-db95ba15837a"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Relatório Completo Tipo de Movimentação]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="2" width="100" height="20" uuid="00448ba3-6638-4fdc-bbe4-3be72446ddc0"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="2" width="100" height="20" uuid="d4bdb3a4-855c-40d4-9cc2-4c8f4ce0af37"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="2" width="476" height="20" uuid="9cef9117-84ea-41a9-90ed-1291eb5b9e18"/>
+				<text><![CDATA[Descrião]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="34" width="777" height="1" uuid="b3b43beb-5891-4e32-9b5a-491a93173703"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="7" width="100" height="20" uuid="93d0a5ae-2767-4527-9d2a-21233382d2f1"/>
+				<textFieldExpression><![CDATA[$F{cod_tpmov}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="7" width="100" height="20" uuid="576e5e01-878d-4297-81bc-2e41138c9e43"/>
+				<textFieldExpression><![CDATA[$F{nom_tpmov}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="7" width="476" height="20" uuid="cfcec874-df4f-47a2-81b6-75761a1e7535"/>
+				<textFieldExpression><![CDATA[$F{des_tpmov}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="746" y="10" width="16" height="20" uuid="4b37eec3-ffef-456a-83e3-fdce264d41f5"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="771" y="10" width="16" height="20" uuid="98e32082-70b7-4f77-bff7-f33c8565ea3d"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="762" y="10" width="9" height="20" uuid="5f8d05c1-3c10-4d84-a269-4ced6f517b09"/>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="149" y="10" width="53" height="20" uuid="2e4d4edc-e02d-40fc-87a2-33ad5a8d9574"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="10" y="10" width="139" height="20" uuid="0fb38b31-2011-4efd-891a-694f740132db"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

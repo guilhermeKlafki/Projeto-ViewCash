@@ -7,6 +7,8 @@ package views;
 
 import controller.AlunoController;
 import controller.UsuarioController;
+import controller.tpMovimentacaoController;
+import controller.tpPagamentoController;
 import ferramentas.CaixaDeDialogo;
 import static groovy.sql.Sql.resultSet;
 import java.awt.Color;
@@ -61,7 +63,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuTpPagamento = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        parametrosRe = new javax.swing.JMenuItem();
         ReUsuarioCompleto = new javax.swing.JMenuItem();
+        ReTipoPagamento = new javax.swing.JMenuItem();
+        ReTipoMovimentacao = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -141,6 +146,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/relatório.png"))); // NOI18N
         jMenu2.setText("Relatórios");
 
+        parametrosRe.setText("Parametos de Relatório");
+        parametrosRe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parametrosReActionPerformed(evt);
+            }
+        });
+        jMenu2.add(parametrosRe);
+
         ReUsuarioCompleto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/relatório.png"))); // NOI18N
         ReUsuarioCompleto.setText("Relatório Completo Usuarios");
         ReUsuarioCompleto.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +162,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(ReUsuarioCompleto);
+
+        ReTipoPagamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/relatório.png"))); // NOI18N
+        ReTipoPagamento.setText("Relatório Completo Tipo Pagamento");
+        ReTipoPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReTipoPagamentoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(ReTipoPagamento);
+
+        ReTipoMovimentacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/relatório.png"))); // NOI18N
+        ReTipoMovimentacao.setText("Relatório Completo Tipo Movimentação ");
+        ReTipoMovimentacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReTipoMovimentacaoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(ReTipoMovimentacao);
 
         jMenuBar1.add(jMenu2);
 
@@ -303,6 +334,68 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ReUsuarioCompletoActionPerformed
 
+    private void ReTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReTipoPagamentoActionPerformed
+        // TODO add your handling code here:
+        
+        // TODO add your handling code here:
+        
+         // metodo para gerar um relaório
+         
+         // Para criar o arquivo .jasper na pasa tem que cicar em preview no iReport
+       
+      
+        try {
+            
+            tpPagamentoController objtppagCon = new tpPagamentoController(null, null);
+            ResultSet resultSet = objtppagCon.buscarRelatorio();//Buscar os dados do relatório
+            JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
+            JasperPrint jpPrint = JasperFillManager.fillReport("Relatorios/tipoPagamento.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
+            JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
+            jpViewer.setVisible(true);//abre o relatório para visualização
+            jpViewer.toFront();//define o form a frente da aplicação
+            
+        } catch (JRException ex) {
+            
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
+        }
+    }//GEN-LAST:event_ReTipoPagamentoActionPerformed
+
+    private void ReTipoMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReTipoMovimentacaoActionPerformed
+        // TODO add your handling code here:
+        
+        // TODO add your handling code here:
+        
+        // TODO add your handling code here:
+        
+         // metodo para gerar um relaório
+         
+         // Para criar o arquivo .jasper na pasa tem que cicar em preview no iReport
+       
+      
+        try {
+            
+            tpMovimentacaoController objtpmovi = new tpMovimentacaoController(null, null);
+            ResultSet resultSet = objtpmovi.buscarRelatorio();//Buscar os dados do relatório
+            JRResultSetDataSource relResult = new JRResultSetDataSource(resultSet);//Passa um resultSet para a fonte de dados do relatório
+            JasperPrint jpPrint = JasperFillManager.fillReport("Relatorios/tipoMovimentacao.jasper", new HashMap(), relResult);//Prepara o relatório para ser impresso, recebe o gerenciador JASPER
+            JasperViewer jpViewer = new JasperViewer(jpPrint, false); //
+            jpViewer.setVisible(true);//abre o relatório para visualização
+            jpViewer.toFront();//define o form a frente da aplicação
+            
+        } catch (JRException ex) {
+            
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage(), 'e');
+        }
+        
+        
+    }//GEN-LAST:event_ReTipoMovimentacaoActionPerformed
+
+    private void parametrosReActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parametrosReActionPerformed
+        // TODO add your handling code here:
+        ParametrosRelatoriosView parametros = new ParametrosRelatoriosView();
+        parametros.setVisible(true);
+    }//GEN-LAST:event_parametrosReActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,6 +432,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ReTipoMovimentacao;
+    private javax.swing.JMenuItem ReTipoPagamento;
     private javax.swing.JMenuItem ReUsuarioCompleto;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -356,6 +451,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAlunos;
     private javax.swing.JMenuItem menuTpPagamento;
     private javax.swing.JMenuItem menuUsuarios;
+    private javax.swing.JMenuItem parametrosRe;
     private javax.swing.JLabel txtDespesaMes_principal;
     private javax.swing.JLabel txtDespesaTotal_principal;
     private javax.swing.JLabel txtNomeUsuario_principal;

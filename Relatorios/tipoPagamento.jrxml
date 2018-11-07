@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tipoPagamento" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930890eb-a527-4e70-b2e7-2ab210331f93">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from tipo_pagamento]]>
+	</queryString>
+	<field name="cod_tppag" class="java.lang.Integer"/>
+	<field name="nom_tppag" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="63" y="30" width="451" height="34" uuid="88470747-8e70-438a-8153-8c5e185fdb42"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Relatório Completo Tipo de Pagamento]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="39" y="2" width="100" height="20" uuid="0e7a2c00-614d-4f17-ba1b-00422ce45b41"/>
+				<text><![CDATA[Código:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="0" width="100" height="20" uuid="7d56e989-22e1-41ca-abba-01dda9e2a725"/>
+				<text><![CDATA[Nome: ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="39" y="22" width="318" height="1" uuid="f07bfbf9-1d50-4f9a-bee9-232f539238ad"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="39" y="0" width="100" height="20" uuid="b7e7ccc0-db3d-4b1f-8bad-cc498345e5ff"/>
+				<textFieldExpression><![CDATA[$F{cod_tppag}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="0" width="100" height="20" uuid="e8c3ce73-8430-43e6-b927-5e0658879a45"/>
+				<textFieldExpression><![CDATA[$F{nom_tppag}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="526" y="11" width="16" height="20" uuid="8f40e3c2-e2b7-499d-8ce6-996f2f6e1d3c"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="501" y="11" width="16" height="20" uuid="bea181fa-f7e3-4456-a034-8039780ae1a0"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="11" width="139" height="20" uuid="8445af8d-e62d-4301-97c2-46d84e9d26f4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="139" y="11" width="53" height="20" uuid="d1ef17a1-c2e4-4097-b512-c0287687e09c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="517" y="11" width="9" height="20" uuid="03401036-8114-44b3-bb2e-827149e7c95f"/>
+				<text><![CDATA[/]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
