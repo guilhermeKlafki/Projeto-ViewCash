@@ -17,7 +17,7 @@ public class Movimentacao {
     private int codigo_usu;
     private String valor;
     private String data;
-    private String res_des;
+    private String rec_des;
 
     public int getCodigo_movi() {
         return codigo_movi;
@@ -67,13 +67,17 @@ public class Movimentacao {
         this.data = data;
     }
 
-    public String getRes_des() {
-        return res_des;
+    public String getRec_des() {
+        return rec_des;
     }
 
-    public void setRes_des(String res_des) {
-        this.res_des = res_des;
+    public void setRec_des(String rec_des) {
+        this.rec_des = rec_des;
     }
+
+    
+
+
     
     
     

@@ -8,6 +8,9 @@ package controller;
 import Connection.ConnectionFactory;
 import java.awt.Color;
 import java.awt.Component;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -16,6 +19,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import model.Movimentacao;
+import model.tpMovimentacao;
 
 
 /**
@@ -34,6 +38,56 @@ public class MovimentacaoController {
         this.jtbMovi = jtbMovi;
     }
     
+    
+    public Movimentacao buscar(String coluna4)
+    {
+        try {
+            ConnectionFactory.abreConexao();
+            ResultSet rs = null;
+
+            String SQL = "";                  
+            SQL = " SELECT  cod_mov, cod_tpmov, cod_usu, cod_tppag, valor_mov, data_mov, des_rec ";
+            SQL += " FROM  movimentacao m,tipo_movimentacao tm, tipo_pagamento tp, usuario u ";
+            SQL += " WHARE m.cod_tpmovi = tm.cod_tpmovi AND m.cod_usu = u.cod_usu ADN m.cod_tppag = tp.cod_tppag AND cod_mov = '" + coluna4 + "'";
+            
+
+            try{
+                System.out.println("Vai Executar Conexão em buscar Movimentação");
+                rs = ConnectionFactory.stmt.executeQuery(SQL);
+                System.out.println("Executou Conexão em buscar Movimentação");
+
+                objMovi = new Movimentacao();
+                
+                if(rs.next() == true)
+                {
+                    objMovi.setCodigo_movi(rs.getInt(1));
+                    objMovi.setCodigo_tpmovi(rs.getInt(2));
+                    objMovi.setCodigo_usu(rs.getInt(3));
+                    objMovi.setCodigo_tppag(rs.getInt(4));
+                    objMovi.setValor(rs.getString(5));
+                    objMovi.setData(String.valueOf(rs.getDate(6)));
+                    objMovi.setRec_des(rs.getString(7));
+                    
+                    
+                }
+                
+               
+            }
+
+            catch (SQLException ex )
+            {
+                System.out.println("ERRO de SQL: " + ex.getMessage().toString());
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage().toString());
+            return null;
+        }
+        
+        System.out.println ("Executou buscar Movimentação com sucesso");
+        return objMovi;
+    }
     
     public void PreencheTabelaMovi() {
 
@@ -131,6 +185,91 @@ public class MovimentacaoController {
         }catch(Exception ex){
             System.out.println("Erro: " + ex.getMessage().toString());
         }
+    }
+    
+    public boolean incluir(Movimentacao objMovi){
+        
+        ConnectionFactory.abreConexao();
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+       
+        try {
+            
+            stmt = con.prepareStatement("INSERT INTO movimentacao (cod_tpmov, cod_usu, cod_tppag, valor_mov, data_mov, des_rec)VALUES(?,?,?,?,?,?)");
+            stmt.setInt(1, objMovi.getCodigo_tpmovi());
+            stmt.setInt(2, objMovi.getCodigo_usu());
+            stmt.setInt(3, objMovi.getCodigo_tppag());
+            stmt.setInt(4, (Integer.valueOf(objMovi.getValor())));
+            stmt.setDate(5, Date.valueOf(objMovi.getData()));
+            stmt.setString(6, objMovi.getRec_des());
+            
+            
+            stmt.executeUpdate();
+            
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        
+    
+    }
+    
+    public boolean alterar(Movimentacao objTpMovi){
+        
+        ConnectionFactory.abreConexao();
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+       
+        try {
+            
+            stmt = con.prepareStatement("UPDATE movimentacao SET cod_tpmov=?, cod_usu=?, cod_tppag=?, valor_mov=?, data_mov=?, des_rec=? WHERE cod_mov=?");
+            stmt.setInt(1, objTpMovi.getCodigo_tpmovi());
+            stmt.setInt(1, objTpMovi.getCodigo_usu());
+            stmt.setInt(1, objTpMovi.getCodigo_tppag());
+            stmt.setInt(1, Integer.valueOf(objTpMovi.getValor()));
+            stmt.setDate(2, Date.valueOf(objTpMovi.getData()));
+            stmt.setString(3, objTpMovi.getRec_des());
+            
+            stmt.executeUpdate();
+            
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }       
+        
+    }
+    
+    
+    public boolean excluir(Movimentacao objMovi){
+        
+        ConnectionFactory.abreConexao();
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try{
+            stmt = con.prepareStatement("DELETE FROM movimentacao WHERE cod_mov=?");
+            stmt.setInt(1, Integer.valueOf(objMovi.getCodigo_movi()));
+            
+                        
+            stmt.executeUpdate();
+            
+            return true;
+            
+        }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        
     }
     
 }
