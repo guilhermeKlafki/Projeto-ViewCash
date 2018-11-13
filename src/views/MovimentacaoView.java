@@ -8,6 +8,7 @@ package views;
 import controller.MovimentacaoController;
 import controller.tpMovimentacaoController;
 import ferramentas.CaixaDeDialogo;
+import ferramentas.Combos;
 
 /**
  *
@@ -18,11 +19,31 @@ public class MovimentacaoView extends javax.swing.JFrame {
     /**
      * Creates new form MovimentacaoView
      */
+    Combos cbTpMovi;
+    Combos cbTppag;
+    
     public MovimentacaoView() {
         initComponents();
         MovimentacaoController moviCon = new MovimentacaoController(null, jtbMovi);
         moviCon.PreencheTabelaMovi();
         limparTelaMovi();
+        
+        try {
+            //carregar os alunos existentes
+            atualizaMovimentacao();
+
+            //carregar os cursos existentes
+            cbTpMovi = new Combos(jComboBoxTipoMovimentacao);
+            cbTpMovi.PreencheCombo("SELECT cod_tpmov, nom_tpmov FROM tipo_movimentacao ORDER BY nom_tpmov");
+            
+            cbTppag = new Combos(jComboBoxTipoPagamento);
+            cbTppag.PreencheCombo("SELECT cod_tppag, nom_tppag FROM tipo_pagamento ORDER BY nom_tppag");
+            
+            limparTelaMovi();
+
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("ERRO:" + ex.getMessage());
+        }
         
     }
 
@@ -329,9 +350,9 @@ public class MovimentacaoView extends javax.swing.JFrame {
             //txtDescricao_tpMovi.setText("");
             
             // Não deixa o botão Alterar aparecer na tela
-            //btnAlterar_Movi.setVisible(false);
-            //btnExcluir_tpMovi.setVisible(false);
-           // btnInserir_tpMovi.setVisible(true);
+            btnAlterar_movi.setVisible(false);
+            btnExcluir_movi.setVisible(false);
+           btnInserir_movi.setVisible(true);
         } catch (Exception ex) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
         }
