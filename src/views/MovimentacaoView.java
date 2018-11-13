@@ -368,29 +368,36 @@ public class MovimentacaoView extends javax.swing.JFrame {
     
     private void btnInserir_moviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_moviActionPerformed
         // TODO add your handling code here:
-        if (verificarCamposTpMovi()== true) {
+       if (verificarCamposTpMovi()== true) {
             
-       /*
-    Abaixo um exemplo para salvar os dados que estão no radio botão.
-    String SEX0_ALU ="";
-    if(JRBMasculino.isSelected()){
-         SEX0_ALU = "Masculino";
-    }
        
-        if(JRBFeminino.isSelected()){
-         SEXO_ALU = "Feminino";
-        }
+    //Abaixo um exemplo para salvar os dados que estão no radio botão.
+     
+    
 
 
-limpa os radios botões selecionado
+/* limpa os radios botões selecionado
 
 grupo.clearSelection();
 
-*/     
+        */
+    
 
             objMovi = new Movimentacao();
             MovimentacaoController moviCon = new MovimentacaoController(null, jtbMovi);
-
+            try {
+                if(radioDespesa.isSelected()){
+                    objMovi.setRec_des("D");
+                }
+                 else{
+                    objMovi.setRec_des("R");
+                    }
+                
+            } catch (Exception ex) {
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+            }
+            
+            
             objMovi.setData(txtData.getText());
             objMovi.setValor(txtValor.getText());
 
