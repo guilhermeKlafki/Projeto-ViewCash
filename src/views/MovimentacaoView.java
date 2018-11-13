@@ -5,6 +5,10 @@
  */
 package views;
 
+import controller.MovimentacaoController;
+import controller.tpMovimentacaoController;
+import ferramentas.CaixaDeDialogo;
+
 /**
  *
  * @author Guilherme Klafki
@@ -16,6 +20,10 @@ public class MovimentacaoView extends javax.swing.JFrame {
      */
     public MovimentacaoView() {
         initComponents();
+        MovimentacaoController moviCon = new MovimentacaoController(null, jtbMovi);
+        moviCon.PreencheTabelaMovi();
+        limparTelaMovi();
+        
     }
 
     /**
@@ -32,16 +40,16 @@ public class MovimentacaoView extends javax.swing.JFrame {
         lblMovimentacao = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lvltpPagamento = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxTipoPagamento = new javax.swing.JComboBox<>();
         radioDespesa = new javax.swing.JRadioButton();
         radioReceita = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        txtData = new javax.swing.JFormattedTextField();
         lblTPmovimetacao = new javax.swing.JLabel();
         lblValor = new javax.swing.JLabel();
         jComboBoxTipoMovimentacao = new javax.swing.JComboBox<>();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        txtValor = new javax.swing.JFormattedTextField();
         btnInserir_movi = new javax.swing.JButton();
         btnLimpar_movi = new javax.swing.JButton();
         btnExcluir_movi = new javax.swing.JButton();
@@ -64,7 +72,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
         lvltpPagamento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lvltpPagamento.setText("Tipo de Pagamento:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         radioDespesa.setText("Despesa");
         radioDespesa.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +90,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
         lblData.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblData.setText("Data:");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
         lblTPmovimetacao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTPmovimetacao.setText("Tipo de Movimetação:");
@@ -97,7 +105,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
             }
         });
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
+        txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
 
         btnInserir_movi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/inserir.png"))); // NOI18N
         btnInserir_movi.setText("Inserir");
@@ -151,11 +159,9 @@ public class MovimentacaoView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtValor, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblTPmovimetacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblData)
                     .addComponent(lblValor)
@@ -173,8 +179,8 @@ public class MovimentacaoView extends javax.swing.JFrame {
                                 .addGap(28, 28, 28)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jComboBoxTipoMovimentacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(127, 127, 127)
+                                    .addComponent(jComboBoxTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnInserir_movi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlterar_movi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -201,15 +207,15 @@ public class MovimentacaoView extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lvltpPagamento)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(lblData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblValor)
                         .addGap(12, 12, 12)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(btnInserir_movi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,6 +299,44 @@ public class MovimentacaoView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxTipoMovimentacaoActionPerformed
 
+    public boolean verificarCamposTpMovi() {
+        if (txtData.getText().trim().equals("")) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Campo Data está em branco!", "Erro", 'e');
+            txtData.requestFocus();
+            
+            return false;           
+        }if (txtValor.getText().trim().equals("")) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Campo Valor está em branco!", "Erro", 'e');
+            txtValor.requestFocus();
+            
+            return false;
+        }
+        return true;
+    }
+    
+     public void atualizaMovimentacao(){
+        MovimentacaoController moviCon = new MovimentacaoController(null, jtbMovi);
+        moviCon.PreencheTabelaMovi();
+    }
+     
+     private void limparTelaMovi() {
+        try {
+            //LIMPAR OS CAMPOS DA TELA
+            //LIBERAR O CAMPO MATRICULA
+
+            txtData.setText("");
+            txtValor.setText("");
+            //txtDescricao_tpMovi.setText("");
+            
+            // Não deixa o botão Alterar aparecer na tela
+            //btnAlterar_Movi.setVisible(false);
+            //btnExcluir_tpMovi.setVisible(false);
+           // btnInserir_tpMovi.setVisible(true);
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+        }
+    }
+    
     private void btnInserir_moviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir_moviActionPerformed
         // TODO add your handling code here:
       /*  if (verificarCamposTpMovi()== true) {
@@ -390,10 +434,8 @@ public class MovimentacaoView extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltar_movi;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxTipoMovimentacao;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JComboBox<String> jComboBoxTipoPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -407,5 +449,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
     private javax.swing.JLabel lvltpPagamento;
     private javax.swing.JRadioButton radioDespesa;
     private javax.swing.JRadioButton radioReceita;
+    private javax.swing.JFormattedTextField txtData;
+    private javax.swing.JFormattedTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }
