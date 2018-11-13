@@ -25,17 +25,17 @@ import model.Movimentacao;
 public class MovimentacaoController {
     
     
-    Movimentacao objMovimentacao;
+    Movimentacao objMovi;
     
-    JTable jtbMovimentacao = null;
+    JTable jtbMovi = null;
     
-    public MovimentacaoController(Movimentacao objMovimentacao, JTable jtbMovimentacao) {
-        this.objMovimentacao = objMovimentacao;
-        this.jtbMovimentacao = jtbMovimentacao;
+    public MovimentacaoController(Movimentacao objMovi, JTable jtbMovi) {
+        this.objMovi = objMovi;
+        this.jtbMovi = jtbMovi;
     }
     
     
-    public void PreencheTabelaMovii() {
+    public void PreencheTabelaMovi() {
 
         try{
             
@@ -43,31 +43,35 @@ public class MovimentacaoController {
         
         Vector<String> cabecalhos = new Vector<String>();
         Vector dadosTabela = new Vector();
-        cabecalhos.add("Codigo Movi");
+        cabecalhos.add("Codigo Movimentação");
         cabecalhos.add("Codigo Tipo Movimentaçao");
         cabecalhos.add("Codigo Usuário");
         cabecalhos.add("Codigo Tipo Pagamento");
-        
-        cabecalhos.add("Nome");
-        cabecalhos.add("Descrição");
-        
+        cabecalhos.add("Valor");
+        cabecalhos.add("Data");
+        cabecalhos.add("Despesa/Receita");
         
         ResultSet result = null;
         
         try {
 
             String SQL = "";
-            SQL = " SELECT cod_tpmov, nom_tpmov, des_tpmov ";
-            SQL += " FROM tipo_movimentacao ";           
-            SQL += " ORDER BY nom_tpmov ";
+            SQL = " SELECT  cod_mov, cod_tpmov, cod_usu, cod_tppag, valor_mov, data_mov, des_rec ";
+            SQL += " FROM  movimentacao m,tipo_movimentacao tm, tipo_pagamento tp, usuario u ";
+            SQL += " WHARE m.cod_tpmovi = tm.cod_tpmovi AND m.cod_usu = u.cod_usu ADN m.cod_tppag = tp.cod_tppag ";
+            SQL += " ORDER BY cod_mov ";
             
             result = ConnectionFactory.stmt.executeQuery(SQL);
 
             while (result.next()) {
                 Vector<Object> linha = new Vector<Object>();
                 linha.add(result.getInt(1));
-                linha.add(result.getString(2));
-                linha.add(result.getString(3));
+                linha.add(result.getInt(2));
+                linha.add(result.getInt(3));
+                linha.add(result.getInt(4));
+                linha.add(result.getInt(5));
+                linha.add(result.getString(6));
+                linha.add(result.getString(7));
                 dadosTabela.add(linha);
             }
             
