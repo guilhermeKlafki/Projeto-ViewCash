@@ -59,6 +59,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuAlunos = new javax.swing.JMenuItem();
+        menuMovimentacao = new javax.swing.JMenuItem();
         menuUsuarios = new javax.swing.JMenuItem();
         menuTpPagamento = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -113,6 +114,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(menuAlunos);
+
+        menuMovimentacao.setText("Movimentação");
+        menuMovimentacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuMovimentacaoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuMovimentacao);
 
         menuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/usuario.png"))); // NOI18N
         menuUsuarios.setText("Usuaros");
@@ -396,6 +405,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         parametros.setVisible(true);
     }//GEN-LAST:event_parametrosReActionPerformed
 
+    private void menuMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMovimentacaoActionPerformed
+        // TODO add your handling code here:
+        
+        MovimentacaoView tela = new MovimentacaoView();
+        tela.setVisible(true);
+    }//GEN-LAST:event_menuMovimentacaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -449,6 +465,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblReceitaMes_principal;
     private javax.swing.JLabel lblReceitaTota_principal;
     private javax.swing.JMenuItem menuAlunos;
+    private javax.swing.JMenuItem menuMovimentacao;
     private javax.swing.JMenuItem menuTpPagamento;
     private javax.swing.JMenuItem menuUsuarios;
     private javax.swing.JMenuItem parametrosRe;

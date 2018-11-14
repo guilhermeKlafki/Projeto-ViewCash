@@ -46,9 +46,9 @@ public class MovimentacaoController {
             ResultSet rs = null;
 
             String SQL = "";                  
-            SQL = " SELECT  cod_mov, cod_tpmov, cod_usu, cod_tppag, valor_mov, data_mov, des_rec ";
+            SQL = " SELECT  cod_mov, m.cod_tpmov, m.cod_usu, m.cod_tppag, valor_mov, data_mov, des_rec ";
             SQL += " FROM  movimentacao m,tipo_movimentacao tm, tipo_pagamento tp, usuario u ";
-            SQL += " WHARE m.cod_tpmovi = tm.cod_tpmovi AND m.cod_usu = u.cod_usu ADN m.cod_tppag = tp.cod_tppag AND cod_mov = '" + coluna4 + "'";
+            SQL += " WHERE m.cod_tpmov = tm.cod_tpmov AND m.cod_usu = u.cod_usu AND m.cod_tppag = tp.cod_tppag AND cod_mov = '" + coluna4 + "'";
             
 
             try{
@@ -66,6 +66,7 @@ public class MovimentacaoController {
                     objMovi.setCodigo_tppag(rs.getInt(4));
                     objMovi.setValor(rs.getString(5));
                     objMovi.setData(String.valueOf(rs.getDate(6)));
+                    
                     objMovi.setRec_des(rs.getString(7));
                     
                     
@@ -110,9 +111,9 @@ public class MovimentacaoController {
         try {
 
             String SQL = "";
-            SQL = " SELECT  cod_mov, cod_tpmov, cod_usu, cod_tppag, valor_mov, data_mov, des_rec ";
+            SQL = " SELECT  cod_mov, m.cod_tpmov, m.cod_usu, m.cod_tppag, valor_mov, data_mov, des_rec ";
             SQL += " FROM  movimentacao m,tipo_movimentacao tm, tipo_pagamento tp, usuario u ";
-            SQL += " WHARE m.cod_tpmovi = tm.cod_tpmovi AND m.cod_usu = u.cod_usu ADN m.cod_tppag = tp.cod_tppag ";
+            SQL += " WHERE m.cod_tpmov = tm.cod_tpmov AND m.cod_usu = u.cod_usu AND m.cod_tppag = tp.cod_tppag ";
             SQL += " ORDER BY cod_mov ";
             
             result = ConnectionFactory.stmt.executeQuery(SQL);
@@ -199,7 +200,7 @@ public class MovimentacaoController {
             stmt.setInt(1, objMovi.getCodigo_tpmovi());
             stmt.setInt(2, objMovi.getCodigo_usu());
             stmt.setInt(3, objMovi.getCodigo_tppag());
-            stmt.setInt(4, (Integer.valueOf(objMovi.getValor())));
+            stmt.setInt(4, (Integer.parseInt(objMovi.getValor())));
             stmt.setDate(5, Date.valueOf(objMovi.getData()));
             stmt.setString(6, objMovi.getRec_des());
             

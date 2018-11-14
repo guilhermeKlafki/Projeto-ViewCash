@@ -22,11 +22,16 @@ public class Combos {
     private String codigo;
     private String descricao;
     JComboBox cbCombo = null;
+    //JComboBox cbTpMovi = null;
+    //JComboBox cbTppag = null;
     ResultSet result = null;
 
     public Combos(JComboBox cbCombo) {
         this.cbCombo = cbCombo;
     }
+    
+    
+    
     public Combos() {
 
     }
