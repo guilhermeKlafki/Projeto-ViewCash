@@ -361,6 +361,7 @@ public class TipoPagamentoView extends javax.swing.JFrame {
             
             tppagCon.incluir(objTpPagamento);
             atualizaTpPagamento();
+            limparTelaTpPag();
 
             JOptionPane.showMessageDialog(null, "Tipo de Pagamento inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
         }

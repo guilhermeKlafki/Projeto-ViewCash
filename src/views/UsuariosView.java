@@ -297,7 +297,8 @@ public class UsuariosView extends javax.swing.JFrame {
             objUsuario.setNome(txtNome.getText());
             objUsuario.setSenha(txtSenha.getText());
             userCon.incluir(objUsuario);
-            atualizaUsuario();                       
+            atualizaUsuario();  
+            limparTela();
               
             JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
         }

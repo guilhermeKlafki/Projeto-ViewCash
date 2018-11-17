@@ -82,7 +82,6 @@ public class MovimentacaoView extends javax.swing.JFrame {
         btnAlterar_movi = new javax.swing.JButton();
         txtValor = new javax.swing.JTextField();
         txtData = new javax.swing.JFormattedTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -183,17 +182,9 @@ public class MovimentacaoView extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtData.setText("  /  /    ");
         txtData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDataActionPerformed(evt);
-            }
-        });
-
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
             }
         });
 
@@ -205,7 +196,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTPmovimetacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblData)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -227,13 +218,11 @@ public class MovimentacaoView extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblValor)
                                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(50, 50, 50))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnInserir_movi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlterar_movi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -277,14 +266,9 @@ public class MovimentacaoView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblValor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(lblValor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(44, 44, 44))
         );
 
@@ -314,8 +298,8 @@ public class MovimentacaoView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,6 +347,11 @@ public class MovimentacaoView extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTipoMovimentacaoActionPerformed
 
     public boolean verificarCamposTpMovi() {
+        
+         if(radioDespesa.isSelected() == false && radioReceita.isSelected() == false){
+               CaixaDeDialogo.obterinstancia().exibirMensagem("Selecione: Receita ou Despesa!", "Erro", 'e');
+            }
+        
         if (txtData.getText().trim().equals("")) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Campo Data está em branco!", "Erro", 'e');
             txtData.requestFocus();
@@ -385,12 +374,14 @@ public class MovimentacaoView extends javax.swing.JFrame {
      private void limparTelaMovi() {
         try {
             //LIMPAR OS CAMPOS DA TELA
-            //LIBERAR O CAMPO MATRICULA
             
-          // buttonGroup1.clearSelection();
-            //txtData.setText("");
-            //txtValor.setText("");
-            //txtDescricao_tpMovi.setText("");
+            
+           buttonGroup1.clearSelection();
+           //cbTpMovi.SetaComboBox("");
+           //cbTppag.SetaComboBox("");
+           txtData.setText("");
+           txtValor.setText("");
+          
             
             // Não deixa o botão Alterar aparecer na tela
             btnAlterar_movi.setVisible(false);
@@ -421,6 +412,8 @@ public class MovimentacaoView extends javax.swing.JFrame {
             }else{
                 radioReceita.setSelected(true);
             }
+            
+           
             
             // Deixa o botão Alterar aparecer na tela
             btnAlterar_movi.setVisible(true);
@@ -460,7 +453,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
             String codigoCursoTpPag = c2.getCodigo();
             objMovi.setCodigo_tppag(Integer.parseInt(codigoCursoTpPag));
             // Tem que pegar o codigo do usuáio ao logar -
-            objMovi.setCodigo_usu(8);
+            objMovi.setCodigo_usu(36);
          
             //objMovi.setCodigo_tpmovi(Integer.parseInt(cbTpMovi.getCodigo()));
             //objMovi.setCodigo_tppag(Integer.parseInt(cbTpMovi.getCodigo()));
@@ -492,14 +485,14 @@ public class MovimentacaoView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpar_moviActionPerformed
 
     private void btnExcluir_moviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir_moviActionPerformed
-        /*
-        objTpMovimentacao = new tpMovimentacao();
-        tpMovimentacaoController tpmoviCon = new tpMovimentacaoController(objTpMovimentacao, null);
-        objTpMovimentacao.setCodigo(txtCodigo_tpMovi.getText());
-        tpmoviCon.excluir(objTpMovimentacao);
-        atualizaTpMovimentacao();
-        limparTelaTpMovi();
-        */
+        
+        objMovi = new Movimentacao();
+        MovimentacaoController moviCon = new MovimentacaoController(objMovi, null);
+        objMovi.setCodigo_movi(objMovi.getCodigo_movi());
+        moviCon.excluir(objMovi);
+        atualizaMovimentacao();
+        limparTelaMovi();
+        
     }//GEN-LAST:event_btnExcluir_moviActionPerformed
 
     private void btnVoltar_moviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar_moviActionPerformed
@@ -545,10 +538,6 @@ public class MovimentacaoView extends javax.swing.JFrame {
     private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDataActionPerformed
-
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -596,7 +585,6 @@ public class MovimentacaoView extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JComboBox<String> jComboBoxTipoMovimentacao;
     private javax.swing.JComboBox<String> jComboBoxTipoPagamento;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

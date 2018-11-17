@@ -292,7 +292,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
     private void limparTelaTpMovi() {
         try {
             //LIMPAR OS CAMPOS DA TELA
-            //LIBERAR O CAMPO MATRICULA
+            
 
             txtCodigo_tpMovi.setText("");
             txtNome_tpMovi.setText("");
@@ -338,6 +338,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
             
             tpmoviCon.incluir(objTpMovimentacao);
             atualizaTpMovimentacao();
+            limparTelaTpMovi();
 
             JOptionPane.showMessageDialog(null, "Tipo de Movimentação inserido com sucesso !!", "Informação", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -365,7 +366,7 @@ public class TipoMovimentacaoView extends javax.swing.JFrame {
 
     private void btnAlterar_tpMoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar_tpMoviActionPerformed
 
-       if(verificarCamposTpMovi()== false) {
+       if(verificarCamposTpMovi()== true) {
 
             objTpMovimentacao = new tpMovimentacao();
              tpMovimentacaoController tpmoviCon = new tpMovimentacaoController(objTpMovimentacao, null);

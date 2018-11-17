@@ -155,7 +155,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/relatório.png"))); // NOI18N
         jMenu2.setText("Relatórios");
 
-        parametrosRe.setText("Parametos de Relatório");
+        parametrosRe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/relatório.png"))); // NOI18N
+        parametrosRe.setText("Parametos de Relatório - Usuário");
         parametrosRe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 parametrosReActionPerformed(evt);

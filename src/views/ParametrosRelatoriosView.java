@@ -42,24 +42,32 @@ public class ParametrosRelatoriosView extends javax.swing.JFrame {
         lblParametros = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtNome_parametros = new javax.swing.JTextField();
-        btnBuscar_parametros = new javax.swing.JButton();
+        btnBuscar_PrUsuario = new javax.swing.JButton();
+        btnVoltar_PrUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblParametros.setBackground(new java.awt.Color(204, 204, 204));
         lblParametros.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblParametros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblParametros.setText("Parametros de Relatório");
+        lblParametros.setText("Parametros de Relatório - Usuário");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Nome:");
+        jLabel1.setText("Buscar por Nome Usuário:");
 
-        txtNome_parametros.setText("jTextField1");
-
-        btnBuscar_parametros.setText("Buscar");
-        btnBuscar_parametros.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar_PrUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBuscar_PrUsuario.setText("Buscar Relatório");
+        btnBuscar_PrUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar_parametrosActionPerformed(evt);
+                btnBuscar_PrUsuarioActionPerformed(evt);
+            }
+        });
+
+        btnVoltar_PrUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnVoltar_PrUsuario.setText("Voltar");
+        btnVoltar_PrUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltar_PrUsuarioActionPerformed(evt);
             }
         });
 
@@ -72,13 +80,15 @@ public class ParametrosRelatoriosView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel1)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNome_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNome_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(btnBuscar_parametros)))
+                        .addGap(68, 68, 68)
+                        .addComponent(btnBuscar_PrUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87)
+                        .addComponent(btnVoltar_PrUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,15 +101,17 @@ public class ParametrosRelatoriosView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNome_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(btnBuscar_parametros)
-                .addGap(0, 202, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscar_PrUsuario)
+                    .addComponent(btnVoltar_PrUsuario))
+                .addGap(74, 74, 74))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscar_parametrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar_parametrosActionPerformed
+    private void btnBuscar_PrUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar_PrUsuarioActionPerformed
         // TODO add your handling code here:
         
         try{
@@ -123,7 +135,12 @@ public class ParametrosRelatoriosView extends javax.swing.JFrame {
             
         }
         
-    }//GEN-LAST:event_btnBuscar_parametrosActionPerformed
+    }//GEN-LAST:event_btnBuscar_PrUsuarioActionPerformed
+
+    private void btnVoltar_PrUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar_PrUsuarioActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnVoltar_PrUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,7 +178,8 @@ public class ParametrosRelatoriosView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar_parametros;
+    private javax.swing.JButton btnBuscar_PrUsuario;
+    private javax.swing.JButton btnVoltar_PrUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblParametros;
