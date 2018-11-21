@@ -16,19 +16,19 @@ import model.Usuario;
  */
 public class LoginController {
     
-    public Usuario Login(String usuario, String senha){
+    public static Usuario Login(String usuario, String senha){
         
         //INÍCIO CONEXÃO COM O BANCO DE DADOS
         System.out.println("Vai abrir a conexão com o banco de dados");
         ConnectionFactory.abreConexao();
         
         //Criando um usuario
-        Usuario user = null;
+         Usuario user = null;
         //Resultado do banco.
         ResultSet rs = null;
 
            StringBuilder sql = new StringBuilder();
-           sql.append(" SELECT login, senha, nom_usu");
+           sql.append(" SELECT login, senha, nom_usu, cod_usu");
            sql.append(" FROM usuario");
            sql.append(" WHERE login = '" + usuario + "' ");
            sql.append(" AND senha = '" + senha + "'");
@@ -43,6 +43,8 @@ public class LoginController {
              user = new Usuario();
              user.setLogin(rs.getString("login"));
              user.setNome(rs.getString("nom_usu"));
+             user.setCodio(rs.getString("cod_usu"));
+             user.setSenha(rs.getString("senha"));
             }
             
         } catch (SQLException ex) {

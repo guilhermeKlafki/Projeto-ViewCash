@@ -36,6 +36,8 @@ public class MovimentacaoView extends javax.swing.JFrame {
         try {
             //carregar os alunos existentes
             atualizaMovimentacao();
+            
+            ferramentas.Formatacao.colocaMascara(teste_data, "##/##/####");
 
             //carregar os cursos existentes
             cbTpMovi = new Combos(jComboBoxTipoMovimentacao);
@@ -82,6 +84,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
         btnAlterar_movi = new javax.swing.JButton();
         txtValor = new javax.swing.JTextField();
         txtData = new javax.swing.JFormattedTextField();
+        teste_data = new javax.swing.JFormattedTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -214,14 +217,13 @@ public class MovimentacaoView extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jComboBoxTipoMovimentacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jComboBoxTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblValor)
-                                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(50, 50, 50))))
+                            .addComponent(lblValor)
+                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(teste_data, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnInserir_movi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,7 +266,9 @@ public class MovimentacaoView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(teste_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)
                         .addComponent(lblValor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -369,6 +373,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
      public void atualizaMovimentacao(){
         MovimentacaoController moviCon = new MovimentacaoController(null, jtbMovi);
         moviCon.PreencheTabelaMovi();
+        
     }
      
      private void limparTelaMovi() {
@@ -453,7 +458,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
             String codigoCursoTpPag = c2.getCodigo();
             objMovi.setCodigo_tppag(Integer.parseInt(codigoCursoTpPag));
             // Tem que pegar o codigo do usuáio ao logar -
-            objMovi.setCodigo_usu(36);
+            objMovi.setCodigo_usu(Integer.parseInt(LoginView.user.getCodio()));
          
             //objMovi.setCodigo_tpmovi(Integer.parseInt(cbTpMovi.getCodigo()));
             //objMovi.setCodigo_tppag(Integer.parseInt(cbTpMovi.getCodigo()));
@@ -598,6 +603,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
     private javax.swing.JLabel lvltpPagamento;
     private javax.swing.JRadioButton radioDespesa;
     private javax.swing.JRadioButton radioReceita;
+    private javax.swing.JFormattedTextField teste_data;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables

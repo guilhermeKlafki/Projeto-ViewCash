@@ -5,6 +5,7 @@
  */
 package views;
 
+import com.lowagie.text.pdf.PdfName;
 import controller.AlunoController;
 import controller.UsuarioController;
 import controller.tpMovimentacaoController;
@@ -19,7 +20,8 @@ import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
-
+import model.Usuario;
+import controller.LoginController;
 /**
  *
  * @author lucas.pandolfo
@@ -33,6 +35,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.getContentPane().setBackground(Color.WHITE);
+        
+        
+        System.out.println("Usuário na tea de Principal");
+        System.out.println(LoginView.user.getCodio());
+        System.out.println(LoginView.user.getNome());
+        System.out.println(LoginView.user.getLogin());
+        System.out.println(LoginView.user.getSenha());
+        txtNomeUsuario_principal.setText(LoginView.user.getNome());
     }
 
     /**

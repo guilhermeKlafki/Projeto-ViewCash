@@ -25,6 +25,7 @@ import model.Usuario;
  */
 public class LoginView extends javax.swing.JFrame {
 
+    public static Usuario user;
     /**
      * Creates new form viewLogin
      */
@@ -182,15 +183,20 @@ public class LoginView extends javax.swing.JFrame {
          
          String senha = new String(this. txtSenha.getPassword());
                  
-         Usuario user = login.Login(usuario, senha);
+         user = login.Login(usuario, senha);
          
             if (user == null) {
              CaixaDeDialogo.obterinstancia().exibirMensagem("Este usuário não existe no sistema!", "Erro", 'e');
              return;   
            } else {
+                
                 TelaPrincipal tela = new TelaPrincipal();
                 tela.setVisible(true);
-                this.setVisible(false);   
+                this.setVisible(false);
+                System.out.println(user.getCodio());
+                System.out.println(user.getNome());
+                System.out.println(user.getLogin());
+                System.out.println(user.getSenha());
             }
          
     }//GEN-LAST:event_btnEntrarActionPerformed
