@@ -219,7 +219,7 @@ public class MovimentacaoController {
     
     }
     
-    public boolean alterar(Movimentacao objTpMovi){
+    public boolean alterar(Movimentacao objMovi){
         
         ConnectionFactory.abreConexao();
         Connection con = ConnectionFactory.getConnection();
@@ -228,13 +228,13 @@ public class MovimentacaoController {
         try {
             
             stmt = con.prepareStatement("UPDATE movimentacao SET cod_tpmov=?, cod_usu=?, cod_tppag=?, valor_mov=?, data_mov=?, des_rec=? WHERE cod_mov=?");
-            stmt.setInt(1, objTpMovi.getCodigo_tpmovi());
-            stmt.setInt(1, objTpMovi.getCodigo_usu());
-            stmt.setInt(1, objTpMovi.getCodigo_tppag());
-            stmt.setInt(1, Integer.valueOf(objTpMovi.getValor()));
-            stmt.setDate(2, Date.valueOf(objTpMovi.getData()));
-            stmt.setString(3, objTpMovi.getRec_des());
-            
+            stmt.setInt(1, objMovi.getCodigo_tpmovi());
+            stmt.setInt(2, objMovi.getCodigo_usu());
+            stmt.setInt(3, objMovi.getCodigo_tppag());
+            stmt.setInt(4, Integer.valueOf(objMovi.getValor()));            
+            stmt.setDate(5, Date.valueOf(objMovi.getData()));
+            stmt.setString(6, objMovi.getRec_des());
+            stmt.setInt(7, objMovi.getCodigo_movi());
             stmt.executeUpdate();
             
             return true;

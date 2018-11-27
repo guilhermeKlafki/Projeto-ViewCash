@@ -68,7 +68,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        menuAlunos = new javax.swing.JMenuItem();
         menuMovimentacao = new javax.swing.JMenuItem();
         menuUsuarios = new javax.swing.JMenuItem();
         menuTpPagamento = new javax.swing.JMenuItem();
@@ -117,14 +116,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cadasro.png"))); // NOI18N
         jMenu1.setText("Cadastros");
 
-        menuAlunos.setText("Alunos");
-        menuAlunos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuAlunosActionPerformed(evt);
-            }
-        });
-        jMenu1.add(menuAlunos);
-
+        menuMovimentacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/tpMovi.png"))); // NOI18N
         menuMovimentacao.setText("Movimentação");
         menuMovimentacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,12 +311,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
        System.exit(0);        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void menuAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlunosActionPerformed
-        // TODO add your handling code here:
-        AlunosView alunos = new AlunosView();
-        alunos.setVisible(true);
-    }//GEN-LAST:event_menuAlunosActionPerformed
-
     private void ReUsuarioCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReUsuarioCompletoActionPerformed
         // TODO add your handling code here:
         
@@ -475,7 +461,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNomeUsu_principal;
     private javax.swing.JLabel lblReceitaMes_principal;
     private javax.swing.JLabel lblReceitaTota_principal;
-    private javax.swing.JMenuItem menuAlunos;
     private javax.swing.JMenuItem menuMovimentacao;
     private javax.swing.JMenuItem menuTpPagamento;
     private javax.swing.JMenuItem menuUsuarios;
