@@ -371,17 +371,17 @@ public class MovimentacaoView extends javax.swing.JFrame {
         
          if(radioDespesa.isSelected() == false && radioReceita.isSelected() == false){
                CaixaDeDialogo.obterinstancia().exibirMensagem("Selecione: Receita ou Despesa!", "Erro", 'e');
+               return false;
             }
         
         if (txtData.getText().trim().equals("")) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Campo Data está em branco!", "Erro", 'e');
-            txtData.requestFocus();
+            txtData.requestFocus();            
+            return false; 
             
-            return false;           
         }if (txtValor.getText().trim().equals("")) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Campo Valor está em branco!", "Erro", 'e');
-            txtValor.requestFocus();
-            
+            txtValor.requestFocus();            
             return false;
         }
         return true;
@@ -511,7 +511,7 @@ public class MovimentacaoView extends javax.swing.JFrame {
         
         objMovi = new Movimentacao();
         MovimentacaoController moviCon = new MovimentacaoController(objMovi, null);
-        objMovi.setCodigo_movi(objMovi.getCodigo_movi());
+        objMovi.setCodigo_movi(Integer.parseInt(txtCodigo.getText()));
         moviCon.excluir(objMovi);
         atualizaMovimentacao();
         limparTelaMovi();
